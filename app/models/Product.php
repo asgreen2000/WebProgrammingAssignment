@@ -25,9 +25,9 @@ class Product {
 
     public function read() {
 
-        $query = $this->conn->prepare('SELECT * from ?');
-        $query->bind_param("s", $this->table);
-        $result = $query->execute();
+        
+        $sql = "SELECT * FROM ". $this->table;
+        $result = $this->conn->query($sql);
         return $result;
     }
 
