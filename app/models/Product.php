@@ -31,6 +31,12 @@ class Product {
         return $result;
     }
 
+    public function readSingle() {
+        $sql = "SELECT * FROM " . $this->table . " where id=" . $this->id;
+        $result = $this->conn->query($sql);
+        return $result;
+    }
+
 }
 
 ?>
