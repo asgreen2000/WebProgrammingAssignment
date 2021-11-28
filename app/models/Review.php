@@ -1,19 +1,22 @@
 <?php
 
-class News {
+class Product {
 
     // db config
     private $conn;
-    private $table = 'contact';
+    private $table = 'product';
 
 
     // attribute
-    public $id;
+    public $userID ;
     public $title;
-    public $content;
-    public $subject;
-    public $image;
-    public $postTime;
+    public $src;
+    public $srcDetail;
+    public $price;
+    public $quantity;
+    public $description;
+    public $type;
+    public $alt;
 
     public function __construct($conn)
     {
