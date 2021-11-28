@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import './ManageProduct.css'
-// import { requireProductList } from '../../api/services'
-import { ProductManagement } from '../../../context/ProductManagement';
+import { insertProduct,requireProductList,editProduct,deleteProduct } from '../../../api/services'
+import { ProductManagement, } from '../../../context/ProductManagement';
 import React, { useContext, useEffect, useState } from 'react';
 import AddProduct from "./AddProduct/AddProduct"
 import EditProduct from "./EditProduct/EditProduct"
@@ -24,12 +24,15 @@ import { Link } from 'react-router-dom';
 
 function ManageProduct() {
     const [data, setData] = useState({
-        product_name: '',
-        product_type: '',
-        price: '',
-        instock: '',
-        product_description: '',
-        image: '',
+       pName:'',
+       src:'',
+       srcDetail:'',
+       price:'',
+       quantity:'',
+       description:'',
+       type:'',
+       alt:'',
+       id:''
     })
     const [id, setId] = useState(0);
     const [open, setOpen] = useState(false);
@@ -41,7 +44,6 @@ function ManageProduct() {
     const [isShowingEditModal, setIsShowingEditModal] = useState(false);
     let num = productList ? productList.length : 0;
     let numPage = num % 10 === 0 ? num / 10 : Math.floor(num / 10) + 1;
-    console.log("Pro",productList);
 
     useEffect(() => {
         if (isShowing || isShowingEditModal) {
@@ -63,45 +65,48 @@ function ManageProduct() {
             [name]: value,
 
         });
+        // console.log(data);
     }
     const handleClickOpen = (id) => {
         setOpen(true);
         setId(id);
     };
     const handelSubmitDelete = () => {
-        // deleteProduct(id);
+        deleteProduct(id);
         setTimeout(() =>
-        setProductList(setProductList), 100)
+        requireProductList(setProductList), 100)
         setOpen(false);
     }
     const handleClose = () => {
         setOpen(false);
     };
-    const handleToggleEdit = (id) => {
-        const product = productList.filter(item => item.id === id)[0]
+    const handleToggleEdit = (_id) => {
+        const product = productList.filter(item => item.id === _id)[0]
         setData({
-            product_name: product.pName,
-            product_type: product.type,
-            fund: product.quantiy,
+            pName: product.pName,
+            type: product.type,
+            quantity: product.quantity,
             price: product.price,
-            instock: product.quantiy,
             product_description: product.description,
-            image: product.src,
+            src: product.src,
+            srcDetail: product.srcDetail,
+            alt: product.alt,
+            id: _id
         })
         toggleEdit();
-        setId(id);
+        setId(_id);
     }
     const handleEditChange = (idEdit) => {
         const dataEdit = {
             data: data,
             id: idEdit
         }
-        console.log(dataEdit);
+        // console.log(dataEdit);
 
         toggleEdit();
-        // updateProduct(dataEdit);
-        // setTimeout(() =>
-        //     requireFoodList(setFoodList), 100)
+        editProduct(dataEdit);
+        setTimeout(() =>
+        requireProductList(setProductList), 100)
 
     }
 
@@ -112,7 +117,7 @@ function ManageProduct() {
         setTimeout(()=>{
             setFilter(event.target.value);
         },10)
-        console.log(filter);
+        // console.log(filter);
     };
     const toggleEdit = () => {
         setIsShowingEditModal(!isShowingEditModal);
@@ -120,9 +125,9 @@ function ManageProduct() {
 
     const callB = () => {
         toggle();
-        // createNewProduct(data);
-        // setTimeout(() =>
-        //     requireFoodList(setFoodList), 100)
+        insertProduct(data);
+        setTimeout(() =>
+        requireProductList(setProductList), 100)
 
     }
     const handleChangeSearch=(event)=>{
@@ -233,7 +238,7 @@ function ManageProduct() {
                                     <th scope="row">{index + 1}</th>
                                     <td>{product.pName}</td>
                                     <td>{product.type}</td>
-                                    <td>{product.quantiy}</td>
+                                    <td>{product.quantity}</td>
                                     <td>{product.price}</td>
                                     <td onClick={() => handleClickOpen(product.id)}><i className="far fa-trash-alt"></i></td>
                                     <td onClick={() => handleToggleEdit(product.id)}><i className="far fa-edit"></i></td>
