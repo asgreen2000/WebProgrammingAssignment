@@ -1,31 +1,36 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './pages';
-import About from './pages/about';
-import Products from './pages/products';
-import Teams from './pages/team';
-import Blogs from './pages/blogs';
-import SignUp from './pages/signup';
-import SignIn from './pages/signin';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import ProductProvider from "./context/ProductManagement";
+import Sidebar from './components/admin/Sidebar'
+import routes from "./routes";
+// import Navbar from './components/Navbar';
+// import Footer from './components/Footer';
+// import Home from './pages';
+// import About from './pages/about';
+// import Products from './pages/products';
+// import Teams from './pages/team';
+// import Blogs from './pages/blogs';
+// import SignUp from './pages/signup';
+// import SignIn from './pages/signin';
+
   
 function App() {
   return (
-    <Router>
-      <Navbar />
+    <ProductProvider>
+    <BrowserRouter>
+<Sidebar/>
       <Routes>
-        <Route exact path='/' element={<Home/>} />
-        <Route  exact path='/about' element={<About/>} />
-        <Route  exact path='/products' element={<Products/>} />
-        <Route  exact path='/team' element={<Teams/>} />
-        <Route  exact path='/blogs' element={<Blogs/>} />
-        <Route  exact path='/sign-up' element={<SignUp/>} />
-        <Route  exact path='/sign-in' element={<SignIn/>} />
+      {
+        [
+        ...routes.map((route, index) => 
+          <Route  exact path={route.path} element={route.component} key={index}></Route>
+        )
+        ]
+      }
+
       </Routes>
-      <Footer />
-    </Router>
-  );
-}
+      </BrowserRouter>
+      </ProductProvider>
+  )}
   
 export default App;
