@@ -22,7 +22,7 @@
                 "srcDetail" => $srcDetail,
                 "alt" => $alt,
                 "price" => $price,
-                "quantiy" => $quantity,
+                "quantity" => $quantity,
                 "description" => $description,
                 "type" => $type
             );
