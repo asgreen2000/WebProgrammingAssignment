@@ -5,11 +5,15 @@ const url = 'http://localhost/controller/';
 
 const requireProductList = callback =>{
     
-    axios.get(url + 'product/read.php')
-      .then(res => {
-        const data = res.data;
-        console.log(data);
-        callback(data);
+    fetch(url + 'product/read.php')
+      .then(res=>
+        // const data = res.data;
+        // console.log(data);
+        // callback(data);
+       res.json())
+      .then(data => {
+        console.log(data)
+        callback(data)
       })
       .catch(error => console.log(error));
 };
