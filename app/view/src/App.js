@@ -1,37 +1,36 @@
-import './App.css';
-import Sidebar from './components/admin/Sidebar/Sidebar';
-import HomeIcon from '@mui/icons-material/Home';
-import Login from './pages/common/Login';
-import { Route, Routes } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import ProductProvider from "./context/ProductManagement";
+import Sidebar from './components/admin/Sidebar'
+import routes from "./routes";
+// import Navbar from './components/Navbar';
+// import Footer from './components/Footer';
+// import Home from './pages';
+// import About from './pages/about';
+// import Products from './pages/products';
+// import Teams from './pages/team';
+// import Blogs from './pages/blogs';
+// import SignUp from './pages/signup';
+// import SignIn from './pages/signin';
 
-function App() {  
-
-  const [isLogin, setIsLogin] = useState(false);
-  const [user, setUser] = useState(null);
   
-  useEffect(() => {
-
-    axios.get('http://localhost/assi/app/controller/account/read_session_data.php', {withCredentials: true})
-    .then(result => {
-
-      setIsLogin(result.data.isLogin);
-      setUser(result.data.user);
-    });
-
-  }, [isLogin])
-  
+function App() {
   return (
+    <ProductProvider>
     <BrowserRouter>
-    <div className="app">
+<Sidebar/>
       <Routes>
-        {!isLogin ? <Route element={<Login action={setIsLogin}/>} path='/'/>: null}
-      </Routes>
-    </div>
-    </BrowserRouter>
-  );
-}
+      {
+        [
+        ...routes.map((route, index) => 
+          <Route  exact path={route.path} element={route.component} key={index}></Route>
+        )
+        ]
+      }
 
+      </Routes>
+      </BrowserRouter>
+      </ProductProvider>
+  )}
+  
 export default App;
