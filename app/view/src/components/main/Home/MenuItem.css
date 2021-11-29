@@ -1,0 +1,21 @@
+.menu-item {
+
+    border-radius: 1rem;
+    transition: 1s;
+}
+
+.menu-item:hover {
+    position: relative;
+    bottom: 1rem;   
+}
+
+.btn-cart {
+    background-color: red;
+    opacity: 0.6;
+    color: white;
+}
+
+.btn-cart:hover {
+    opacity: 1;
+    color: white;
+}

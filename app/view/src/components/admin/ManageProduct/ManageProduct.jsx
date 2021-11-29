@@ -19,10 +19,14 @@ import DialogActions from '@mui/material/DialogActions';
 // import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Link } from 'react-router-dom';
-
-
+import {logout} from '../../../api/services';
+import { useNavigate } from "react-router";
 
 function ManageProduct() {
+
+
+    const navigate = useNavigate();
+
     const [data, setData] = useState({
         product_name: '',
         product_type: '',
@@ -41,8 +45,7 @@ function ManageProduct() {
     const [isShowingEditModal, setIsShowingEditModal] = useState(false);
     let num = productList ? productList.length : 0;
     let numPage = num % 10 === 0 ? num / 10 : Math.floor(num / 10) + 1;
-    console.log("Pro",productList);
-
+   
     useEffect(() => {
         if (isShowing || isShowingEditModal) {
             document.body.style.overflow = 'hidden';
@@ -53,6 +56,13 @@ function ManageProduct() {
 
     }, [isShowing, isShowingEditModal, productList,filterSearch]);
 
+
+    const handleLogout = () => {
+
+        const result = logout();
+        if (result)
+            navigate('/login');
+    }
 
     const handleInputChange = (event) => {
         const target = event.target;
@@ -96,7 +106,7 @@ function ManageProduct() {
             data: data,
             id: idEdit
         }
-        console.log(dataEdit);
+  
 
         toggleEdit();
         // updateProduct(dataEdit);
@@ -112,7 +122,7 @@ function ManageProduct() {
         setTimeout(()=>{
             setFilter(event.target.value);
         },10)
-        console.log(filter);
+     
     };
     const toggleEdit = () => {
         setIsShowingEditModal(!isShowingEditModal);
@@ -164,7 +174,7 @@ function ManageProduct() {
                                         <p className="dropdown-item" ><Link to='/admin/account'>My profile</Link></p>
                                         </li>
                                         <li>
-                                            <a className="dropdown-item" href="#">Logout</a>
+                                            <button className="dropdown-item" onClick={handleLogout}>Logout</button>
                                         </li>
                                     </ul>
                                 </li>

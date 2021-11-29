@@ -22,8 +22,12 @@ const Login = ({action}) => {
             {   
                 console.log(result.data.user);
                 if (result.data.user.role === 'Admin') {
-                    action(true);
-                    navigate('/home');
+                    
+                   
+                    navigate('/admin');
+                }
+                else {
+                    navigate('/');
                 }
             }
         }
@@ -40,6 +44,7 @@ const Login = ({action}) => {
     }
 
     return (
+    
     <section className="vh-100">
         <div className="container-fluid h-custom">
             <div className="row d-flex justify-content-center align-items-center h-100">

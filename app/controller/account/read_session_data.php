@@ -3,7 +3,7 @@
     session_start();
     include_once('../../config/Header.php');
 
-    if ($_SESSION['log'])    
+    if (isset($_SESSION['log']))    
     {
         echo (json_encode(array('user' => $_SESSION['user'], 'isLogin' => true)));
     }

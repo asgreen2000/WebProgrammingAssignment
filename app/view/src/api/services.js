@@ -14,7 +14,59 @@ const requireProductList = callback =>{
       .catch(error => console.log(error));
 };
 
-export {
-  requireProductList, 
+
+const getUser = () => {
+
+  return new Promise((resolve, reject) => {
+    axios.get(url + 'account/read_session_data.php', {withCredentials: true})
+    .then(result => {
+
+      
+      if (result.data.isLogin)
+        resolve(result.data.user);
+      else {
+        resolve(null);
+      }
+    })
+    .catch(error => {
+
+      reject(null);
+    })
+
+  }) 
+}
+
+const checkUserIs = async (role) => {
+
   
+  return new Promise((resolve, reject) => {
+
+    getUser().then(user => {
+      resolve( user !== null && user.role === role)
+      console.log(123);
+      console.log(user); 
+    })
+    .catch(
+      error => reject(false)
+    )
+
+  });
+
+  
+
+}
+
+const logout = async () => {
+
+  const result = await axios.get(url + 'account/logout.php', {withCredentials: true})
+  
+ 
+  return result && result.data.isLogin;  
+}
+
+export {
+  requireProductList,
+  getUser,
+  checkUserIs,
+  logout
 };
