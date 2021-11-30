@@ -47,14 +47,14 @@ const Navbar = props => {
             <img id="nav-logo" src="/images/buymeFirst-1.png" alt="" className="logo col-3" />
 
             <div className="main-routes d-flex justify-content-center col-5">
-                <div className='d-flex'>
+                <div className='d-flex mx-3'>
 
                     <Link to='/'><i className="fas fa-home">&nbsp;</i>Trang chủ</Link>
                 </div>
 
-                <div className='d-flex'>
+                <div className='d-flex mx-3'>
 
-                    <Link to='/news'><i className="fas fa-home">&nbsp;</i>Tin tức</Link>
+                    <Link to='/news'><i className="fas fa-newspaper">&nbsp;</i>Tin tức</Link>
                 </div>
             </div>
 

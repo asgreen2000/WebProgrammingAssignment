@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import {Navigate, useNavigate} from "react-router";
-import { checkUserIs } from "../../api/services";
+import {useNavigate} from "react-router";
+import axios from "axios";
+
+const url = 'http://localhost/assi/app/controller/';
 
 const ProtectedRoute = ({element, role}) => {
     
@@ -8,20 +10,16 @@ const ProtectedRoute = ({element, role}) => {
     
     const navigate = useNavigate();
     useEffect(() =>  {
-        checkUserIs(role).then(result => {
-            if (result)
-                setItem(element)
-            else {
-                setItem(null)
-                navigate('/signin')
-            }
-        });
-    }, [element]);
+        axios.get(url + 'account/read_session_data.php', {withCredentials: true})
+            .then(result => {
+                if (result.data.isLogin && result.data.role == role)
+                    setItem(element)
+                else
+                    navigate("/signin")
+        })
+    });
     
-    return  (
-        itemToShow
-    )
+    return itemToShow
 }
-
 
 export default ProtectedRoute;

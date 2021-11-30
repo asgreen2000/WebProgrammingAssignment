@@ -1,5 +1,11 @@
 <?php
+    $data = json_decode(file_get_contents("php://input"));
+    if (isset($data->remember) && !$data->remember) {
+        session_set_cookie_params(0);
+    } else
+        session_set_cookie_params(time() + 2592000);
     session_start();
+    session_regenerate_id(true);
     header('Access-Control-Allow-Methods: POST');
     require_once('../../config/Header.php');
     require_once('../../models/Account.php');
@@ -9,8 +15,6 @@
         echo json_encode(array('isSuccess' => true, 'role' => $_SESSION['role']));
     } else {
         $account = new Account((new Database())->connect());
-        $data = json_decode(file_get_contents("php://input"));
-
         $account->username = $data->username;
         $account->password = $data->password;
 
