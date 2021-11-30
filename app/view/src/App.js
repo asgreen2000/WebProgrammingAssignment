@@ -5,6 +5,8 @@ import Login from './pages/common/Login';
 import adminRoutes from './pages/admin/AdminRoutes';
 import ProtectedRoute from './pages/common/ProtectedRoute';
 import MainRoutes from './pages/main/MainRoutes';
+import Homepage from "./pages/news/homepage/Homepage";
+import Single from "./pages/news/single/Single";
 
 function App() {
   console.log('1');
@@ -14,6 +16,8 @@ function App() {
 
       <Routes>
         <Route path='login' element={<Login />}/>
+        <Route path='news' element={<Homepage />}/>
+        <Route path='news/post/1' element={<Single />}/>
       
         <Route path='admin'>
             
