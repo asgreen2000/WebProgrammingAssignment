@@ -1,5 +1,4 @@
-import Category from "../../components/main/Home/Category"
-import Banner from "../../components/main/Home/Banner";
+import Banner from "../../components/common/Slider";
 import './Home.css';
 import MenuItem from "../../components/main/Home/Menu";
 
@@ -7,13 +6,11 @@ const Home = props => {
 
 
     return <div className='w-100'>
-  
-        <div className='row p-5'>
-            <div className='col-12 col-lg-3'>
-                <Category />
-            </div>
-
-            <div className='col-12 col-lg-9'>
+        <div>
+            <Banner title="My Shop"/>
+        </div>
+        <div className='p-5'>
+            <div className='col-12 col-lg-12'>
                 <MenuItem />
             </div>
            

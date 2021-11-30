@@ -15,7 +15,7 @@ const Login = ({action}) => {
     
     const handleClick = () => {
 
-        axios.post('http://localhost/assi/app/controller/account/login.php', data, {withCredentials: true}).then(result => {
+        axios.post('http://localhost/controller/account/login.php', data, {withCredentials: true}).then(result => {
             
             console.log(result);
             if (result.data.isSuccess)

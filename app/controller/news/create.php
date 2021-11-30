@@ -9,19 +9,19 @@
 
 
     // database and connect
-    $new = new News((new Database())->connect());
+    $news = new News((new Database())->connect());
     
     // input data
     $data = json_decode(file_get_contents("php://input"));
 
-    $new->title = $data->title;
-    $new->content = $data->content;
-    $new->subject = $data->subject;
-    $new->image = $data->image;
-    $new->postTime = $data->postTime;
+    $news->title = $data->title;
+    $news->content = $data->content;
+    $news->subject = $data->subject;
+    $news->image = $data->image;
+    $news->postTime = $data->postTime;
 
 
-    $result = $new->create();
+    $result = $news->create();
 
     if ($result)
         echo json_encode(

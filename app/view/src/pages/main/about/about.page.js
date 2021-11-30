@@ -31,7 +31,7 @@ function About() {
                 </div>
                 <h3>Location</h3>
                 <div className={classes.map}>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d3818.190383402895!2d107.18647711525917!3d16.86647413839276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d16.8660815!2d107.18856679999999!4m5!1s0x3140e6ce30d89a11%3A0xb3119b8dc9019907!2zVHJp4buHdSBBbiwgVHJp4buHdSBQaG9uZywgUXXhuqNuZyBUcuG7iywgVmnhu4d0IE5hbQ!3m2!1d16.8668668!2d107.18851869999999!5e0!3m2!1svi!2s!4v1638205968840!5m2!1svi!2s" width={1200} height={500} style={{border: 0}} allowFullScreen loading="lazy" />
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d3818.190383402895!2d107.18647711525917!3d16.86647413839276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d16.8660815!2d107.18856679999999!4m5!1s0x3140e6ce30d89a11%3A0xb3119b8dc9019907!2zVHJp4buHdSBBbiwgVHJp4buHdSBQaG9uZywgUXXhuqNuZyBUcuG7iywgVmnhu4d0IE5hbQ!3m2!1d16.8668668!2d107.18851869999999!5e0!3m2!1svi!2s!4v1638205968840!5m2!1svi!2s" width={1200} height={500} style={{ border: 0 }} allowFullScreen loading="lazy" />
                 </div>
 
                 <div className={classes.contact}>
@@ -42,7 +42,7 @@ function About() {
                     <div className={classes.form}>
                         <div className={classes.boxform}>
                             <form action="" autoComplete="off">
-                                <input style={{marginRight: '5%'}} type="email" placeholder="Email"></input>
+                                <input style={{ marginRight: '5%' }} type="email" placeholder="Email"></input>
                                 <input type="text" placeholder="Name"></input>
                                 <textarea placeholder="Message"></textarea>
                                 <Button>

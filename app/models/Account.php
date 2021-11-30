@@ -17,6 +17,7 @@ class Account {
 
 
     private function isValid() {
+        
         return $this->username != '' && $this->password != '' && $this->email != '' && $this->phonenumber != '';
     }
 
@@ -48,13 +49,14 @@ class Account {
 
         if (!$this->isValid())
             return false;
-
+        
         $sql = $this->conn->prepare("INSERT into account(username, password, email, 
             name, phoneNumber, role) VALUES (?,?,?,?,?, 'User')
         ");
         $pass = password_hash($this->password, PASSWORD_BCRYPT);
         $sql->bind_param('sssss', $this->username, $pass, $this->email, $this->name, $this->phonenumber);
         $result = $sql->execute();
+        print_r($this->conn->error);
         $sql->close();
         return $result;
     }

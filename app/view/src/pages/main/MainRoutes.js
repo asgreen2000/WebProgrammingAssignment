@@ -3,12 +3,12 @@ import Navbar from "../../components/common/Header/Navbar";
 import Footer from "../../components/common/Footer/Footer";
 import Home from './Home';
 import Cart from "../../components/main/Cart/Cart";
-import NewsPage from "./news/NewsPage";
-import About from "./about/About";
-
-import Signin from './signin';
+import About  from "../../components/main/About/about.page";
+import Contact from "../../components/main/Contacts";
 import SignUp from "./signup";
-import SignOut from "./signout"
+import Signin from './signin';
+import NewsPage from "../main/news/NewsPage";
+import Signout from './signout';
 
 const MainRoutes = [
 
@@ -30,17 +30,6 @@ const MainRoutes = [
         </>
     },
     {
-        path: 'about',
-        exact: true,
-        public: true,
-        component: <>
-            <Navbar />
-                <Cart/> 
-                <About />
-            <Footer />
-        </>
-    },
-    {
         path: 'signin',
         exact: true,
         public: true,
@@ -56,8 +45,20 @@ const MainRoutes = [
         path: 'signout',
         exact: true,
         public: true,
-        component: <SignOut />
-    }
+        component: <Signout />
+    }, {
+        path: 'about',
+        exact: true,
+        public: true,
+        component:<><Navbar /> <About /><Footer /></>
+
+    },    {
+        path: 'contact',
+        exact: true,
+        public: true,
+        component:<><Navbar /> <Contact /><Footer /></>
+
+    },
 ]
 
 
