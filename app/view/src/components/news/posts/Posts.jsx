@@ -1,5 +1,6 @@
 import Post from "../post/Post"
 import "./posts.css"
+import $ from 'jquery';
 
 function posts() {
 
