@@ -2,6 +2,8 @@
 
 class News {
 
+
+
     // db config
     private $conn;
     private $table = 'news';
@@ -36,16 +38,34 @@ class News {
 
     public function create() {
 
-       
+        $sql = $this->conn->prepare("INSERT INTO ". $this->table . "(title,content,subject,image,postTime) VALUES 
+        (?, ?, ?, ?, ?)
+        ");
+
+        $sql->bind_param("sssiisss", $this->title, $this->content, $this->subject, 
+        $this->image, $this->postTime);
+        $result = $sql->execute();
+        $sql->close();
+        return $result;
     }
 
     public function delete() {
-       
+        $sql = "DELETE FROM " . $this->table . " where id=" . $this->id;
+        $result = $this->conn->query($sql);
+        return $result;
     }
 
     public function update() {
 
+        $sql = $this->conn->prepare("UPDATE ". $this->table . " set title=?, content=?, subject=?, image=?, postTime=? where id=?
+        ");
+
+        $sql->bind_param("sssssi", $this->title, $this->content, $this->subject, 
+        $this->image, $this->postTime, $this->id);
+        $result = $sql->execute();
         
+        $sql->close();
+        return $result;
     }
 }
 

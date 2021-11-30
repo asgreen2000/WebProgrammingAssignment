@@ -1,6 +1,7 @@
 import {useState, createContext, useEffect} from "react";
 import {
-    requireProductList
+    requireProductList,
+    requireNewsList
 } 
 from '../api/services';
 
@@ -10,9 +11,12 @@ export const ProductManagement = createContext();
 const FoodProvider = ({children}) => {
 
     const [productList, setProductList] = useState([]);
+    const [newsList, setNewsList] = useState([]);
+    
   
     useEffect(() =>{
         requireProductList(setProductList);
+        requireNewsList(setNewsList);
 
     }, []);
 
@@ -20,6 +24,8 @@ const FoodProvider = ({children}) => {
     const data = {
         setProductList,
         productList,
+        newsList,
+        setNewsList
 
     };
 
