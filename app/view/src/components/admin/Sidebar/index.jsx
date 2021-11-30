@@ -7,10 +7,11 @@ const rootPath = 'admin';
 
 function Sidebar(props){
     const location = useLocation();
-    const homeClass = location.pathname === "/" ? "active" : "";
-    const news = location.pathname.match(/^\/news/) ? "active" : "";
-    const customer = location.pathname.match(/^\/customer/) ? "active" : "";
+    const homeClass = location.pathname === "/admin" ? "active" : "";
+    const news = location.pathname === "/admin/news" ? "active" : "";
+    const customer = location.pathname === "admin/customer" ? "active" : "";
     const account = location.pathname.match(/^\/account/) ? "active" : "";
+    console.log("location",location);
     return (
         <div className="sidebar ">
                 <ul>
