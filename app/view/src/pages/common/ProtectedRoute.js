@@ -18,14 +18,16 @@ const ProtectedRoute = ({element, role}) => {
                 setItem(element);
             else {
                 
+                setItem(null);
                 navigate('/login');
+                
             }
             // ...
         }
 
        fetchData();
 
-    }, []);
+    }, [element]);
 
     
     
