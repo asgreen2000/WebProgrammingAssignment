@@ -2,7 +2,7 @@ import "./post.css";
 
 import { Link } from "react-router-dom";
 
-export default function Post({ img, topic, title, time, content }) {
+export default function Post({ id, img, topic, title, time, content }) {
   return (
     <div className="post">
       <img

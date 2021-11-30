@@ -33,15 +33,14 @@ function posts() {
                         content={item.content}
                     />
                 ));
-
-                console.log(rows); // will print "message"
+                data.map((item) => addNews(item));
+                console.log(news); // will print "message"
             },
             error: function (xhr, status, err) {
                 console.log(err);
                 console.log('error');
             }
         });
-        setNews([]);
     };
 
 
@@ -49,67 +48,59 @@ function posts() {
         displayData();
     }, []);
 
-   
-    const numbers = [1, 2, 3, 4, 5];
-    const listItems = numbers.map((number) =>
-        <li>{number}</li>
-    );
-    const listTests = numbers.map((test) => { test }
-    );
-
     return (
         <div className="posts">
-            {/*{newsArray.map(item => (
+            <Post
+                img="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                topic="Life"
+                title="Lorem ipsum dolor sit amet"
+                time="1 hour ago"
+                content=" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
+            officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
+            fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
+            atque, exercitationem quibusdam, reiciendis odio laboriosam?"
+            />
+            <Post
+                img="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                topic="Life"
+                title="Lorem ipsum dolor sit amet"
+                time="1 hour ago"
+                content=" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
+                officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
+                fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
+                atque, exercitationem quibusdam, reiciendis odio laboriosam?"
+            />
+            <Post
+                img="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                topic="Life"
+                title="Lorem ipsum dolor sit amet"
+                time="1 hour ago"
+                content=" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
+                officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
+                fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
+                atque, exercitationem quibusdam, reiciendis odio laboriosam?"
+            />
+            <Post
+                img="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                topic="Life"
+                title="Lorem ipsum dolor sit amet"
+                time="1 hour ago"
+                content=" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
+                officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
+                fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
+                atque, exercitationem quibusdam, reiciendis odio laboriosam?"
+            />
+            {news.map((item) =>
                 <Post
-                    img={item.img}
-                    topic={item.topic}
+                    img={item.image}
+                    topic={item.subject}
                     title={item.title}
-                    time={item.time}
+                    time={item.postTime}
                     content={item.content}
                 />
-            ))}*/}
-            <Post
-                img="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                topic="Life"
-                title="Lorem ipsum dolor sit amet"
-                time="1 hour ago"
-                content=" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-                officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
-                fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
-                atque, exercitationem quibusdam, reiciendis odio laboriosam?"
-            />
-            <Post
-                img="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                topic="Life"
-                title="Lorem ipsum dolor sit amet"
-                time="1 hour ago"
-                content=" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-                officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
-                fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
-                atque, exercitationem quibusdam, reiciendis odio laboriosam?"
-            />
-            <Post
-                img="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                topic="Life"
-                title="Lorem ipsum dolor sit amet"
-                time="1 hour ago"
-                content=" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-                officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
-                fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
-                atque, exercitationem quibusdam, reiciendis odio laboriosam?"
-            />
-            <Post
-                img="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                topic="Life"
-                title="Lorem ipsum dolor sit amet"
-                time="1 hour ago"
-                content=" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-                officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
-                fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
-                atque, exercitationem quibusdam, reiciendis odio laboriosam?"
-            />
-            <rows/>
+            )}
         </div>
+
     )
 }
 
