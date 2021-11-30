@@ -4,7 +4,7 @@ import Footer from "../../components/common/Footer/Footer";
 import Home from './Home';
 import Cart from "../../components/main/Cart/Cart";
 import NewsPage from "./news/NewsPage";
-import About from "./about/about.page";
+import About from "./about/About";
 
 
 const MainRoutes = [

@@ -1,96 +1,44 @@
-import { Link, useNavigate} from "react-router-dom";
-import React from "react";
-import {useEffect,useState } from "react";
-import './Navbar.css';
+import { Link } from "react-router-dom";
+
 
 const Navbar = props => {
-    
-    const navigate = useNavigate();
-    const isLogin = false;
-
-    const [styles,setStyles] = useState(
-        {
-            boxShadow: '',
-            backgroundColor: 'white',
-            height:'90px'
-        }
-    )
-    useEffect(() => {
-        document.addEventListener("scroll", (e) => {
-            var scrolled = document.scrollingElement.scrollTop;
-            if (scrolled>=100) {
-              setStyles({boxShadow:'0 1px 3px rgb(50 50 50 / 40%)',
-              backgroundColor: '#7790d9',
-              height:'80px'
-            });
-            } else {
-              setStyles({boxShadow: '',backgroundColor: 'white',height:'90px'})
-            }
-        });
-    }, []);
-
-    
 
 
-    return (
 
-        <div id="navbar" className='fixed-top d-flex row-remove' 
-        style={{
-            boxShadow: styles.boxShadow,
-            backgroundColor: styles.backgroundColor,
-            height:styles.height,
-            transition:'smooth'
-        }}  
-        >
-            <img id="nav-logo" src="/images/buymeFirst-1.png" alt="" className="logo col-3" />
-            
-            <div className="main-routes d-flex justify-content-center col-5">
-                <div className='d-flex'>
-                 <Link to='/'><i className="fas fa-home">&nbsp;</i>Trang chủ</Link>
-                 <Link to='/news'><i className="fas fa-home">&nbsp;</i>Trang chủ</Link>
-                </div>
+    return <div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><h2 class="text-warning">BUY ME SECOND</h2></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mob-navbar" aria-label="Toggle">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mob-navbar">
+                <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
+                    <li class="nav-item">
+                        <Link class="nav-link text-white text-uppercase" to="/">Trang chủ</Link>
+                    </li>
+                    <li class="nav-item">
+                        <Link class="nav-link text-white text-uppercase" to="">Về chúng tôi</Link>
+                    </li>
+                    <li class="nav-item">
+                        <Link class="nav-link text-white text-uppercase" to="">Liên hệ</Link>
+                    </li>
+                </ul>
+                <ul className='"navbar-nav mb-2 mb-lg-0 d-flex flex-column flex-md-row'>
+                    <button className='btn btn-info'><i class="fas fa-cart-plus"></i></button>
+                    <li className='nav-item'>
+                        <Link class="nav-link text-white" to="">Đăng nhập</Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link class="nav-link text-white" to="">Đăng ký</Link>
+                    </li>
+                </ul>
             </div>
-            
-            <div className="auth-routes d-flex col-4 justify-content-end">
-                
-                <div className='cart-btn'>
-                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                        <i className="fas fa-shopping-cart" style={{ position: "relative" }}>
-                            {1 > 0 ? <span style={{ color: "red", position: "absolute", top: "-10px", right: "-10px" }}>{2}</span> : null}
-                        </i>
-                    </button>
-                </div>
+        </div>
+    </nav>
+    </div>
 
-                {!isLogin ? 
-                    <>
-                        <div className=''>
-                        <Link to='/sign-in'> <i id="icon-sign-in" class="fas fa-sign-in-alt" ></i><div id="text-sign-in">Đăng nhập</div></Link>
-                        </div>
-                    <div className=' '>
-                        <Link to='/sign-up'><i id="icon-register" class="fas fa-edit"></i><div id="text-register">Đăng ký</div></Link>
-                    </div>
-                    </>:
-                    <>
-                    <div className="dropdown">
-                    <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i className="far fa-user"></i>
-                    </button>
-                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <div className='dropdown-item'>
-                            <Link to='/account-details'>Thông tin tài khoản</Link>
-                        </div>
-                        <div className='dropdown-item'>
-                       
-                            <Link to='/' >Đăng xuất</Link>
-                        </div>
-                        </ul>
-                        </div>
-                    </>
-                    }
-                
-        </div>
-        </div>
-    );
-};
+}
 
 export default Navbar;

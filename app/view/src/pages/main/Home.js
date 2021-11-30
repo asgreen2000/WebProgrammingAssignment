@@ -7,9 +7,7 @@ const Home = props => {
 
 
     return <div className='w-100'>
-        <div>
-            <Banner />
-        </div>
+  
         <div className='row p-5'>
             <div className='col-12 col-lg-3'>
                 <Category />

@@ -17,10 +17,11 @@ const Login = ({action}) => {
 
         axios.post('http://localhost/assi/app/controller/account/login.php', data, {withCredentials: true}).then(result => {
             
-            
+            console.log(result);
             if (result.data.isSuccess)
             {   
                 console.log(result.data.user);
+                
                 if (result.data.user.role === 'Admin') {
                     
                    
