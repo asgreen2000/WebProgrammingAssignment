@@ -3,11 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProductProvider from "./context/ProductManagement";
 import Login from './pages/common/Login';
 import adminRoutes from './pages/admin/AdminRoutes';
-import ProtectedRoute from './pages/common/ProtectedRoute';
 import MainRoutes from './pages/main/MainRoutes';
 
 function App() {
-  console.log('1');
+  
   return (
     <ProductProvider>
     <BrowserRouter>

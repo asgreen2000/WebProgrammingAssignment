@@ -40,7 +40,7 @@ export const useStyles = makeStyles((theme) => ({
         margin: '20px 0px 50px',
     },
     about: {
-        margin: '50px 0px',
+        margin: '120px 0px',
         color: '#3f63ae',
         '& h1': {
             width: '200px',

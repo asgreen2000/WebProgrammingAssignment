@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React from 'react'
 import { useStyles } from './about.style.page';
-import Image from './../../asset/About-us-img.jpg';
+import Image from '../../../asset/About-us-img.jpg';
 import { Button, Grid } from '@material-ui/core';
 
 function About() {

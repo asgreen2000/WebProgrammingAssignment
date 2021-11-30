@@ -46,8 +46,8 @@ const Navbar = props => {
             
             <div className="main-routes d-flex justify-content-center col-5">
                 <div className='d-flex'>
-                
-                <Link to='/'><i className="fas fa-home">&nbsp;</i>Trang chủ</Link>
+                 <Link to='/'><i className="fas fa-home">&nbsp;</i>Trang chủ</Link>
+                 <Link to='/news'><i className="fas fa-home">&nbsp;</i>Trang chủ</Link>
                 </div>
             </div>
             
