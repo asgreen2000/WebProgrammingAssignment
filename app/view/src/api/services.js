@@ -20,16 +20,13 @@ const getUser = () => {
   return new Promise((resolve, reject) => {
     axios.get(url + 'account/read_session_data.php', {withCredentials: true})
     .then(result => {
-
-      
       if (result.data.isLogin)
-        resolve(result.data.user);
+        resolve(result.data);
       else {
         resolve(null);
       }
     })
     .catch(error => {
-
       reject(null);
     })
 
@@ -37,23 +34,14 @@ const getUser = () => {
 }
 
 const checkUserIs = async (role) => {
-
-  
   return new Promise((resolve, reject) => {
-
     getUser().then(user => {
-      resolve( user !== null && user.role === role)
-      console.log(123);
-      console.log(user); 
+      resolve(role == user.role)
     })
     .catch(
       error => reject(false)
     )
-
   });
-
-  
-
 }
 
 const logout = async () => {
