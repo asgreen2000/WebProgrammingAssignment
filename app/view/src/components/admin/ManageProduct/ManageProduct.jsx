@@ -58,10 +58,9 @@ function ManageProduct() {
 
 
     const handleLogout = () => {
-
         const result = logout();
         if (result)
-            navigate('/login');
+            navigate('/signin');
     }
 
     const handleInputChange = (event) => {
