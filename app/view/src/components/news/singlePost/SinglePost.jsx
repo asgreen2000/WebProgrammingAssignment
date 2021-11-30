@@ -1,4 +1,5 @@
 import "./singlePost.css";
+import Comments from "../../common/Comment/comments/Comments";
 
 export default function SinglePost() {
   return (
@@ -20,7 +21,7 @@ export default function SinglePost() {
           <span>
             Author:
             <b className="singlePostAuthor">
-                Safak
+                BuyMeFirst
             </b>
           </span>
           <span>1 day ago</span>
@@ -56,6 +57,7 @@ export default function SinglePost() {
           a odit modi eos! Lorem, ipsum dolor sit amet consectetur.
         </p>
       </div>
+      <Comments/>
     </div>
   );
 }
