@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: web
 --
-CREATE DATABASE web 
+CREATE DATABASE web;
+USE web;
 
 -- --------------------------------------------------------
 
