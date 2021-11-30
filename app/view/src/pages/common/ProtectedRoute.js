@@ -19,7 +19,7 @@ const ProtectedRoute = ({element, role}) => {
             else {
                 
                 setItem(null);
-                navigate('/login');
+                navigate('/signin');
                 
             }
             // ...

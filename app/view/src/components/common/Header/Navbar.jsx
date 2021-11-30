@@ -2,13 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import { useEffect, useState } from "react";
 import './Navbar.css';
+import {checkUserIs} from "../../../api/services"
 
 const Navbar = props => {
-
-    const navigate = useNavigate();
-    const isLogin = false;
-
-    const [styles, setStyles] = useState(
+    const [isLogin, setIsLogin] = useState(false)
+    const [styles,setStyles] = useState(
         {
             boxShadow: '',
             backgroundColor: 'white',
@@ -28,6 +26,9 @@ const Navbar = props => {
                 setStyles({ boxShadow: '', backgroundColor: 'white', height: '90px' })
             }
         });
+        checkUserIs("User").then(isLogin => {
+            setIsLogin(isLogin)
+        })
     }, []);
 
 
@@ -58,7 +59,6 @@ const Navbar = props => {
             </div>
 
             <div className="auth-routes d-flex col-4 justify-content-end">
-
                 <div className='cart-btn'>
                     <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                         <i className="fas fa-shopping-cart" style={{ position: "relative" }}>
@@ -70,30 +70,27 @@ const Navbar = props => {
                 {!isLogin ?
                     <>
                         <div className=''>
-                            <Link to='/sign-in'> <i id="icon-sign-in" class="fas fa-sign-in-alt" ></i><div id="text-sign-in">Đăng nhập</div></Link>
+                            <Link to='/signin'> <i id="icon-sign-in" class="fas fa-sign-in-alt" ></i><div id="text-sign-in">Đăng nhập</div></Link>
                         </div>
-                        <div className=' '>
-                            <Link to='/sign-up'><i id="icon-register" class="fas fa-edit"></i><div id="text-register">Đăng ký</div></Link>
+                        <div className=''>
+                            <Link to='/signup'><i id="icon-register" class="fas fa-edit"></i><div id="text-register">Đăng ký</div></Link>
                         </div>
-                    </> :
-                    <>
+                    </> : <>
                         <div className="dropdown">
                             <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="far fa-user"></i>
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <div className='dropdown-item'>
+                                <li className='dropdown-item'>
                                     <Link to='/account-details'>Thông tin tài khoản</Link>
-                                </div>
-                                <div className='dropdown-item'>
-
-                                    <Link to='/' >Đăng xuất</Link>
-                                </div>
+                                </li>
+                                <li className='dropdown-item'>
+                                    <Link to='/signout' >Đăng xuất</Link>
+                                </li>
                             </ul>
                         </div>
                     </>
                 }
-
             </div>
         </div>
     );
