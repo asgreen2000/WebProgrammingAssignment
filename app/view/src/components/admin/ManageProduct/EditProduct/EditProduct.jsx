@@ -18,13 +18,13 @@ const EditProduct =({ isShowing, hide,handleInputChange,handleEditChange,product
                     <p >Type:</p>
             
 
-                    <input type="radio" id="drink" name="product_type" value="Drink"  defaultChecked={product.type==='Drink'}  onChange={handleInputChange}/>
+                    <input type="radio" id="drink" name="product_type" value="Phụ kiện"  defaultChecked={product.type==='Phụ kiện'}  onChange={handleInputChange}/>
                     <label htmlFor="Drink">Phụ kiện</label>
 
-                    <input type ="radio" id="fastfood" name="product_type" value="FastFood"defaultChecked={product.type==='FastFood'} onChange={handleInputChange}/>
+                    <input type ="radio" id="fastfood" name="product_type" value="Laptop" defaultChecked={product.type==='Laptop'} onChange={handleInputChange}/>
                     <label htmlFor="FastFood">Laptop</label>
 
-                    <input type ="radio" id="sweets" name="product_type" value="Sweets" defaultChecked={product.type==='Sweets'}onChange={handleInputChange}/>
+                    <input type ="radio" id="sweets" name="product_type" value="Desktop" defaultChecked={product.type==='Desktop'}onChange={handleInputChange}/>
                     <label htmlFor="Sweets">Desktop</label>
                     
                     

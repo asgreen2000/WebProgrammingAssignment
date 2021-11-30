@@ -52,10 +52,10 @@ const Navbar = props => {
                         !isLogin ? 
                         <>
                         <li className='nav-item'>
-                        <Link class="nav-link text-white" to="">Đăng nhập</Link>
+                        <Link class="nav-link text-white" to="signin">Đăng nhập</Link>
                         </li>
                         <li className='nav-item'>
-                            <Link class="nav-link text-white" to="">Đăng ký</Link>
+                            <Link class="nav-link text-white" to="/signup">Đăng ký</Link>
                         </li>
                         </>:
                         <button onClick={() => handleLogOut()}>Dang xuat</button>

@@ -13,10 +13,12 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Link } from 'react-router-dom';
-
+import {logout} from '../../../api/services';
+import { useNavigate} from "react-router";
 
 
 function ManageNews() {
+    const navigate = useNavigate()
     const [data, setData] = useState({
         title:'',
         content:'',
@@ -121,6 +123,12 @@ function ManageNews() {
         },10)
     }
   
+    const handleLogout = () => {
+        const result = logout();
+        if (result)
+            navigate('/signin');
+    }
+
     return (
         <div id="product">
             <div className="manage-product">
@@ -142,7 +150,7 @@ function ManageNews() {
                                         <img
                                             src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"
                                             className="rounded-circle"
-                                            height="42"
+                                            
                                             alt=""
                                             loading="lazy"
                                         />
@@ -152,7 +160,7 @@ function ManageNews() {
                                         <p className="dropdown-item" ><Link to='/admin/account'>My profile</Link></p>
                                         </li>
                                         <li>
-                                            <a className="dropdown-item" href="#">Logout</a>
+                                            <button className="dropdown-item" onClick={handleLogout}>Logout</button>
                                         </li>
                                     </ul>
                                 </li>

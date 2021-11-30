@@ -7,7 +7,8 @@ const URL = 'http://localhost/assi/'
 const SignIn = ({action}) => {
     const [data, setData] = useState({
         username: "",
-        password: ""
+        password: "",
+		remember: false
     });
 
 	const [feedback, setFeedback] = useState({
@@ -26,7 +27,7 @@ const SignIn = ({action}) => {
 				if (result.data.isSuccess)
 					navigate(result.data.role == 'Admin' ? '/admin' : '/', {replace: true})
 				else {
-					// alert("Unsuccessful")
+					alert("Unsuccessful")
 				}
         	}
         )
@@ -47,7 +48,10 @@ const SignIn = ({action}) => {
     const handleOnChange = (event) => {
 		var name = event.target.name
 		var value = event.target.value
-        data[name] = value
+		if (name == "remember")
+        	value = event.target.checked
+		
+		data[name] = value
         setData({...data})
 
 		if (value.length < 3 || 50 < value.length)
@@ -80,8 +84,8 @@ const SignIn = ({action}) => {
 
 						<div className="d-flex justify-content-between align-items-center">
 							<div className="form-check mb-0">
-								<input className="form-check-input me-2" type="checkbox" id="form2Example3" name="remember"/>
-								<label className="form-check-label" for="form2Example3">Remember me</label>
+								<input className="form-check-input me-2" type="checkbox" id="remember" name="remember" checked={data['remember']} onChange={handleOnChange} />
+								<label className="form-check-label" for="remember">Remember me for 30 days</label>
 							</div>
 							<a href="#" className="text-body">Forgot password?</a>
 						</div>

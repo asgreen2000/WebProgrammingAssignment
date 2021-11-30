@@ -23,10 +23,11 @@ const SignUp = () => {
 		event.preventDefault()
         axios.post(URL + 'app/controller/account/create.php', data, {withCredentials: true})
 			.then(result => {
+				console.log(result);
 				if (result.data.success)
 					navigate('/')
 				else {
-
+					// alert("Không thành công")
 				}
         	}
         );
