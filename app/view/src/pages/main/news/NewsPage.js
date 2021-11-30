@@ -1,12 +1,11 @@
-import Posts from "../../../components/main/News/Posts";
-import Sidebar from "../../../components/main/News/Sidebar";
-
+import posts from "../../../components/news/posts/Posts";
+import Sidebar from "../../../components/admin/Sidebar";
 const NewsPage = props => {
 
 
     return (
         <div className='row'>
-                    <Posts />
+                    <posts />
                     <Sidebar />
                </div> 
     )

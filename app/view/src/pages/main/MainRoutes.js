@@ -9,6 +9,7 @@ import SignUp from "./signup";
 import Signin from './signin';
 import NewsPage from "../main/news/NewsPage";
 import Signout from './signout';
+import Blogs from "./blogs";
 
 const MainRoutes = [
 
@@ -60,6 +61,13 @@ const MainRoutes = [
         component:<><Navbar /> <Contact /><Footer /></>
 
     },
+    {
+        path: 'blogs',
+        exact: true,
+        public: true,
+        component:<><Navbar /> <Blogs /><Footer /></>
+
+    }
 ]
 
 
