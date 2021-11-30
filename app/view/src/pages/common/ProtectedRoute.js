@@ -6,30 +6,23 @@ const ProtectedRoute = ({element, role}) => {
     
     let [itemToShow, setItem] = useState(null);
     
-
     const navigate = useNavigate();
     useEffect(() =>  {
+        checkUserIs(role).then(result => {
 
-        async function fetchData() {
-            // You can await here
-            const response = await checkUserIs(role);
-            console.log(response);
-            if (response)
-                setItem(element);
+            
+            if (result)
+                setItem(element)
             else {
-                
-                setItem(null);
-                navigate('/login');
-                
+                setItem(null)
+                navigate('/signin')
             }
-            // ...
-        }
-
-       fetchData();
-
+        })
+        .catch(
+            error => console.log(error)
+        )
+        ;
     }, [element]);
-
-    
     
     return  (
         itemToShow

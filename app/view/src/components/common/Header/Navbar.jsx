@@ -1,9 +1,30 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-
+import { logout } from "../../../api/services";
+import { useNavigate, useParams } from "react-router";
+import { checkUserIs } from "../../../api/services";
 const Navbar = props => {
 
+    const [isLogin, setIsLogin] = useState(false);
+    const navigate = useNavigate();
+    
+    useEffect(() => {
 
+
+        checkUserIs('User').then(
+            setIsLogin
+        ).catch(
+            error => setIsLogin(false)
+        )
+    }, []);
+
+    const handleLogOut = () => {
+
+        logout();
+    
+        setIsLogin(false);
+        navigate('/signin');
+    }
 
     return <div>
 
@@ -27,12 +48,18 @@ const Navbar = props => {
                 </ul>
                 <ul className='"navbar-nav mb-2 mb-lg-0 d-flex flex-column flex-md-row'>
                     <button className='btn btn-info'><i class="fas fa-cart-plus"></i></button>
-                    <li className='nav-item'>
+                    {
+                        !isLogin ? 
+                        <>
+                        <li className='nav-item'>
                         <Link class="nav-link text-white" to="">Đăng nhập</Link>
-                    </li>
-                    <li className='nav-item'>
-                        <Link class="nav-link text-white" to="">Đăng ký</Link>
-                    </li>
+                        </li>
+                        <li className='nav-item'>
+                            <Link class="nav-link text-white" to="">Đăng ký</Link>
+                        </li>
+                        </>:
+                        <button onClick={() => handleLogOut()}>Dang xuat</button>
+                    }
                 </ul>
             </div>
         </div>

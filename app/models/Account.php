@@ -17,39 +17,44 @@ class Account {
 
 
     private function isValid() {
-
-        return $this->username != '' && $this->password != '' && $this->email != ''
-        && $this->phonenumber != '' && $this->role != '';
-        
+        return $this->username != '' && $this->password != '' && $this->email != '' && $this->phonenumber != '';
     }
 
-    public function __construct($conn)
-    {
-        $this->conn = $conn;
+    public function __construct($db) {
+        $this->conn = $db;
     }
 
     public function validate() {
-
-        $sql = "SELECT * FROM account where username='". $this->username. "' and password='". $this->password."'";
+        $stmt = $this->conn->prepare("SELECT * FROM account where username=?");
+        $stmt->bind_param('s', $this->username);
+        $stmt->execute();
+        $result = $stmt->get_result();
         
-        $result = $this->conn->query($sql);
-        return $result;
+        
+        if ($result->num_rows > 0) {
+            
+            $user = $result->fetch_assoc();
+            $result = password_verify($this->password, $user['password']);
+            if ($result)
+                $this->role = $user['role'];
+            return $result;
+        } else {
+            return false;
+        }
+        $stmt->close();
     }
 
     public function create() {
 
         if (!$this->isValid())
-        {
             return false;
-        }
 
         $sql = $this->conn->prepare("INSERT into account(username, password, email, 
             name, phoneNumber, role) VALUES (?,?,?,?,?, 'User')
         ");
-
-        $sql->bind_param('ssssss', $this->username, $this->password, $this->email, $this->name, $this->phonenumber);
+        $pass = password_hash($this->password, PASSWORD_BCRYPT);
+        $sql->bind_param('sssss', $this->username, $pass, $this->email, $this->name, $this->phonenumber);
         $result = $sql->execute();
-        
         $sql->close();
         return $result;
     }

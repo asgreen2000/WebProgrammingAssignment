@@ -35,6 +35,8 @@ function ManageNews() {
     let num = newsList ? newsList.length : 0;
     let numPage = num % 10 === 0 ? num / 10 : Math.floor(num / 10) + 1;
 
+    
+
     useEffect(() => {
         if (isShowing || isShowingEditModal) {
             document.body.style.overflow = 'hidden';
@@ -188,24 +190,20 @@ function ManageNews() {
                         </thead>
                         <tbody>
 
-                            {newsList.map((product, index) =>
-                              (product.content.toLocaleLowerCase().indexOf(filterSearch.trim().toLocaleLowerCase()) !== -1 
-                                ||product.title.toLocaleLowerCase().indexOf(filterSearch.trim().toLocaleLowerCase()) !== -1 
-                                ||product.subject.toLocaleLowerCase().indexOf(filterSearch.trim().toLocaleLowerCase()) !== -1 
-                              )
-                                && (filterSearch.replace(/\s/g, '')||index >= (page - 1) * 10 )
-                                && (filterSearch.replace(/\s/g, '')||index < page * 10 )
-                                
-                                && 
-                                <tr key={index} >
+                            {newsList.map((news, index) => {  
+
+                                                             
+                                return <tr key={index} >
                                     <th scope="row">{index + 1}</th>
-                                    <td>{product.title}</td>
-                                    <td>{product.content}</td>
-                                    <td>{product.subject}</td>
-                                    <td>{product.postTime}</td>
-                                    <td onClick={() => handleClickOpen(product.id)}><i className="far fa-trash-alt"></i></td>
-                                    <td onClick={() => handleToggleEdit(product.id)}><i className="far fa-edit"></i></td>
+                                    <td>{news.title}</td>
+                                    <td>{news.content}</td>
+                                    <td>{news.subject}</td>
+                                    <td>{news.postTime}</td>
+                                    <td onClick={() => handleClickOpen(news.id)}><i className="far fa-trash-alt"></i></td>
+                                    <td onClick={() => handleToggleEdit(news.id)}><i className="far fa-edit"></i></td>
                                 </tr>
+                                
+                            }
                             )}
 
                         </tbody>

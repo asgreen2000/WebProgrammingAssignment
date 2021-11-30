@@ -5,7 +5,7 @@
     include_once('../../config/Database.php');
     include_once('../../models/Account.php');
 
-    if (isset($_SESSION['log']) $$ )    
+    if ($_SESSION['log'])    
     {
         $account = new Account((new Database())->connect());
 

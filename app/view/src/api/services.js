@@ -20,40 +20,30 @@ const getUser = () => {
   return new Promise((resolve, reject) => {
     axios.get(url + 'account/read_session_data.php', {withCredentials: true})
     .then(result => {
-
       
       if (result.data.isLogin)
-        resolve(result.data.user);
+        resolve(result.data);
       else {
         resolve(null);
       }
     })
     .catch(error => {
-
       reject(null);
     })
 
   }) 
 }
 
-const checkUserIs = async (role) => {
-
-  
+const checkUserIs = (role) => {
   return new Promise((resolve, reject) => {
-
     getUser().then(user => {
-      resolve( user !== null && user.role === role)
-      console.log(123);
-      console.log(user); 
+      
+      resolve(user && role == user.role)
     })
     .catch(
-      error => reject(false)
+      error => reject(error)
     )
-
   });
-
-  
-
 }
 
 const logout = async () => {
@@ -128,6 +118,7 @@ const insertProduct = (product) => {
 const editProduct =(product)=>{
   axios.put(url + 'product/update.php',product.data)
   .then(res => {
+    console.log(res);
     console.log("product edit",product);
   }
   )
@@ -137,7 +128,7 @@ const editProduct =(product)=>{
 const deleteProduct = (id)=>{
   axios.delete(url+ 'product/delete.php?id='+ id)
   .then(res=>{
-    console.log("id delete:",id);
+    console.log(res);
   })
   .catch(error => console.log(error));
 }

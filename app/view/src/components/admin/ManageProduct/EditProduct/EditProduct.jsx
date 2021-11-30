@@ -19,19 +19,14 @@ const EditProduct =({ isShowing, hide,handleInputChange,handleEditChange,product
             
 
                     <input type="radio" id="drink" name="product_type" value="Drink"  defaultChecked={product.type==='Drink'}  onChange={handleInputChange}/>
-                    <label htmlFor="Drink">Drink</label>
+                    <label htmlFor="Drink">Phụ kiện</label>
 
                     <input type ="radio" id="fastfood" name="product_type" value="FastFood"defaultChecked={product.type==='FastFood'} onChange={handleInputChange}/>
-                    <label htmlFor="FastFood">FastFood</label>
+                    <label htmlFor="FastFood">Laptop</label>
 
                     <input type ="radio" id="sweets" name="product_type" value="Sweets" defaultChecked={product.type==='Sweets'}onChange={handleInputChange}/>
-                    <label htmlFor="Sweets">Sweets</label>
+                    <label htmlFor="Sweets">Desktop</label>
                     
-                    <input type ="radio" id="canning" name="product_type" value="Canning" defaultChecked={product.type==='Canning'}onChange={handleInputChange}/>
-                    <label htmlFor="Canning">Canning</label>
-                    
-                    <input type ="radio" id="frozenfood" name="product_type" value="FrozenFood" onChange={handleInputChange}/>
-                    <label htmlFor="FrozenFood">FrozenFood</label>
                     
                     </div>
                     <label className="mt-2">Image:</label>
@@ -43,9 +38,9 @@ const EditProduct =({ isShowing, hide,handleInputChange,handleEditChange,product
                     <input type ="text" className="form-control" defaultValue={product.price} name="price" onChange={handleInputChange}/>
                    
                     <label className="mt-2">InStock:</label>
-                    <input type ="text" className="form-control" defaultValue={product.quantiy} name="instock" onChange={handleInputChange} />
+                    <input type ="text" className="form-control" defaultValue={product.quantity} name="quantity" onChange={handleInputChange} />
                     <label className="mt-2">Description:</label>
-                    <textarea rows="3" type ="text-area" className="form-control" name="product_description" defaultValue={product.Product_Description} onChange={handleInputChange}/>
+                    <textarea rows="3" type ="text-area" className="form-control" name="product_description" defaultValue={product.description} onChange={handleInputChange}/>
 
                     </div>
                     <div className="modal-footer">

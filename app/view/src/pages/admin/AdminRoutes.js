@@ -17,8 +17,7 @@ const adminRoutes = [
         public: true,
         component: <><ProtectedRoute element = {<><Sidebar /><ManageNews/></>} role = 'Admin'/></>
     }
-
-
+    
 ];
 
 

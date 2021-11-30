@@ -42,7 +42,7 @@ class News {
         (?, ?, ?, ?, ?)
         ");
 
-        $sql->bind_param("sssiisss", $this->title, $this->content, $this->subject, 
+        $sql->bind_param("sssss", $this->title, $this->content, $this->subject, 
         $this->image, $this->postTime);
         $result = $sql->execute();
         $sql->close();
