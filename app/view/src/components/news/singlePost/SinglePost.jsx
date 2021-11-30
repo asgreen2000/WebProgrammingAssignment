@@ -21,7 +21,7 @@ export default function SinglePost() {
           <span>
             Author:
             <b className="singlePostAuthor">
-                BuyMeFirst
+              BuyMeFirst
             </b>
           </span>
           <span>1 day ago</span>
@@ -57,7 +57,9 @@ export default function SinglePost() {
           a odit modi eos! Lorem, ipsum dolor sit amet consectetur.
         </p>
       </div>
-      <Comments/>
+      <Comments
+        currentUserId="0"
+      />
     </div>
   );
 }

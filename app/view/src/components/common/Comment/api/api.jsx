@@ -40,8 +40,8 @@ export const createComment = async (text, parentId = null) => {
     id: Math.random().toString(36).substr(2, 9),
     body: text,
     parentId,
-    userId: "1",
-    username: "John",
+    userId: "0",
+    username: "Guest",
     createdAt: new Date().toISOString(),
   };
 };
