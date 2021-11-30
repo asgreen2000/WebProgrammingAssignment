@@ -13,7 +13,6 @@
         $this->conn = null;
 
         $this->conn = new mysqli($this->host, $this->username, $this->password, $this->db_name);
-        echo "Yest"
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
