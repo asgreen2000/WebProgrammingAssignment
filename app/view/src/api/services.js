@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const url =http://localhost/controller/product/read.php
-const url = 'http://localhost/controller/';
+const url = 'http://localhost/assi/app/controller/';
 
 const requireProductList = callback =>{
     

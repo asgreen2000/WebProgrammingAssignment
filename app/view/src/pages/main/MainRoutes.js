@@ -52,7 +52,8 @@ const MainRoutes = [
         public: true,
         component:<><Navbar /> <About /><Footer /></>
 
-    },    {
+    },
+    {
         path: 'contact',
         exact: true,
         public: true,

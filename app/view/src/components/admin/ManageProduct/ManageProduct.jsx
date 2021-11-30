@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import './ManageProduct.css'
 import { insertProduct,requireProductList,editProduct,deleteProduct } from '../../../api/services'
-import { ProductManagement, } from '../../../context/ProductManagement';
+import { ProductManagement} from '../../../context/ProductManagement';
 import React, { useContext, useEffect, useState } from 'react';
 import AddProduct from "./AddProduct/AddProduct"
 import EditProduct from "./EditProduct/EditProduct"
@@ -59,10 +59,14 @@ function ManageProduct() {
     }, [isShowing, isShowingEditModal, productList,filterSearch]);
 
 
-    const handleLogout = () => {
+    const handleLogout = (event) => {
+
+        
         const result = logout();
+        console.log(result);
         if (result)
             navigate('/signin');
+            event.preventDefault();
     }
 
 
