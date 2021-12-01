@@ -153,7 +153,7 @@ function ManageProduct() {
     }
   
     return (
-        <div id="product">
+        <div id="product" className='w-100'>
             <div className="manage-product">
                 <div className="header">
 

@@ -23,7 +23,7 @@ const EditProduct =({ isShowing, hide,handleInputChange,handleEditChange,product
                     <input type="date" className="form-control"  defaultValue={product.postTime}  name='postTime' onChange={handleInputChange}/>
 
                     <label className="mt-2">Content:</label>
-                    <textarea type ="text-area" rows='10' className="form-control"  defaultValue={product.content}  name="content" onChange={handleInputChange}/>
+                    <textarea type ="text-area" rows='3' className="form-control"  defaultValue={product.content}  name="content" onChange={handleInputChange}/>
 
                 </div>
                     <div className="modal-footer">
