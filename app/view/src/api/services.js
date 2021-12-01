@@ -185,6 +185,24 @@ const requireContactList = callback => {
     .catch(error => console.log(error));
 };
 
+const getAccountUser = callback =>{
+    
+  axios.get(url + 'account/read_list.php')
+    .then(res => {
+      const data = res.data;
+      callback(data);
+    })
+    .catch(error => console.log(error));
+};
+
+const deleteUser = (id)=>{
+  axios.delete(url+ 'account/delete.php?id='+ id)
+  .then(res=>{
+    console.log("id delete:",id);
+  })
+  .catch(error => console.log(error));
+}
+
 
 export {
   url,
@@ -204,5 +222,7 @@ export {
   createContact,
   sendEmail,
   requireContactList,
-  deleteContact
+  deleteContact,
+  getAccountUser,
+  deleteUser
 };

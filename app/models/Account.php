@@ -88,6 +88,18 @@ class Account {
         return $result;
     }
 
+    public function read_customer() {
+
+        $sql = "SELECT * from account where role != 'User'";
+        $result = $this->conn->query($sql);
+        return $result;
+    }
+    public function delete() {
+        $sql = "DELETE FROM account where id=" . $this->id;
+        $result = $this->conn->query($sql);
+        return $result;
+    }
+    
 }
 
 ?>

@@ -24,7 +24,7 @@ const AddProduct =({ isShowing, hide,callB,handleInputChange }) => isShowing ? R
                     <input type="date" className="form-control"    name='postTime' onChange={handleInputChange}/>
 
                     <label className="mt-2">Content:</label>
-                    <textarea type ="text-area" rows='6' className="form-control"  name="content" onChange={handleInputChange}/>
+                    <textarea type ="text-area" rows='2' className="form-control"  name="content" onChange={handleInputChange}/>
 
                 </div>
                     <div className="modal-footer">

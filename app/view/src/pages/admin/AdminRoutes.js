@@ -3,6 +3,7 @@ import ManageProduct from "../../components/admin/ManageProduct/ManageProduct";
 import ProtectedRoute from "../common/ProtectedRoute";
 import ManageNews from "../../components/admin/ManageNews/ManageNews";
 import ManageContact from "../../components/admin/ManageContact/ManageContact";
+import ManageAccount from "../../components/admin/ManageAccount/ManageAccount";
 
 const adminRoutes = [
 
@@ -23,6 +24,12 @@ const adminRoutes = [
         exact: true,
         public: true,
         component: <><ProtectedRoute element = {<><Sidebar /><ManageContact/></>} role = 'Admin'/></>
+    },
+    {
+        path: 'account',
+        exact: true,
+        public: true,
+        component: <><ProtectedRoute element = {<><Sidebar /><ManageAccount/></>} role = 'Admin'/></>
     }
     
 ];
