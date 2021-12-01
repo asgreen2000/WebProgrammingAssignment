@@ -24,7 +24,7 @@ const Posts = () => {
                 newsList.map((news, index) => {
 
 
-                    return  <div className='col-12 col-sm-6 col-xl-4' key = {index}><Post img={news.image} 
+                    return  <div className='col-12 col-md-6 col-xl-4' key = {index}><Post img={news.image} 
                     topic={news.topic} title={news.title} time= {news.time} content={news.content} id={news.id}
                     /> </div>
                 })

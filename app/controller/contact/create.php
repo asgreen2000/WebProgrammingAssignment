@@ -5,6 +5,7 @@
     header('Access-Control-Allow-Methods: POST');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
+    require_once("../../config/MailHeader.php");
     include_once('../../config/Database.php');
     include_once('../../models/Contact.php');
 
@@ -35,7 +36,7 @@
             $result = $contact->create();
             if ($result) {
                 
-                
+                mail($contact->email ,"Thanks for subcription", "Thank ". $contact->cName, $headers);
                 echo json_encode(
                     array('sucess' => $result, 'message' => "Created!")
                 );

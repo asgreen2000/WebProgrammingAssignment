@@ -7,7 +7,7 @@ const NewsPage = props => {
     return (
         <div className='row'>
                     <Posts />
-                    <Sidebar />
+                    {/* <Sidebar /> */}
                </div> 
     )
 }
