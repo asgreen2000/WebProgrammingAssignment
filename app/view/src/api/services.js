@@ -134,6 +134,7 @@ const deleteProduct = (id)=>{
 }
 
 export {
+  url,
   requireProductList,
   getSingleProdcut,
   insertProduct,
