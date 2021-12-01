@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import './ManageAccount.css'
-import { getAccountUser,deleteUser } from '../../../api/services';
+import { getAccountUser,deleteUser, logout } from '../../../api/services';
 import { ProductManagement, } from '../../../context/ProductManagement';
 import React, { useContext, useEffect, useState } from 'react';
 import Pagination from '@mui/material/Pagination';
@@ -10,10 +10,12 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 
 
 function ManageAccount() {
+    const navigate = useNavigate();
     const [id, setId] = useState(0);
     const [open, setOpen] = useState(false);
     const [filterSearch, setFilterSearch] = useState('');
@@ -49,7 +51,12 @@ function ManageAccount() {
             setFilterSearch(value);
         },10)
     }
-  
+    const handleLogout = (event) => {
+        event.preventDefault();
+        const result = logout();
+        if (result)
+            navigate('/signin');
+    }
     return (
         <div id="product" className='w-100'>
             <div className="manage-product">
@@ -81,7 +88,7 @@ function ManageAccount() {
                                         <p className="dropdown-item" ><Link to='/admin/account-details'>My profile</Link></p>
                                         </li>
                                         <li>
-                                            <a className="dropdown-item" href="#">Logout</a>
+                                        <button className="dropdown-item" onClick={handleLogout}>Logout</button>
                                         </li>
                                     </ul>
                                 </li>
