@@ -1,39 +1,38 @@
 import Post from "../post/Post"
 import "./posts.css"
-import $ from 'jquery';
+import { requireNewsList } from "../../../api/services";
+import { useEffect, useState } from "react";
 
-function posts() {
+const Posts = () => {
 
-    const displayData = () => {
-        var displayData = "true";
-        $.ajax({
-            url: "php/a.php",
-            type: 'post',
-            data: {
-                displaySend: displayData
-            },
-            success: function (data, status) {
-                $('#displayDataTable').html(data);
-            }
-        });
-    };
+    const [newsList, setNewList] = useState([]);
+
+
+    useEffect(() => {
+
+        requireNewsList(setNewList);
+
+        console.log(newsList);
+    }, []);
+
+
 
     return (
-        <div className="posts">
-            <Post
-                img="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                topic="Life"
-                title="Lorem ipsum dolor sit amet"
-                time="1 hour ago"
-                content=" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-                officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
-                fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
-                atque, exercitationem quibusdam, reiciendis odio laboriosam?"
-            />
+        <div className="posts row">
+            <h1 className='text-black-50 mb-5'>{"HOME >> NEWS"}</h1>
+            {
+                newsList.map((news, index) => {
 
+
+                    return  <div className='col-12 col-sm-6 col-xl-4' key = {index}><Post img={news.image} 
+                    topic={news.topic} title={news.title} time= {news.time} content={news.content} id={news.id}
+                    /> </div>
+                })
+            }
+            
 
         </div>
     )
 }
 
-export default posts;
+export default Posts;

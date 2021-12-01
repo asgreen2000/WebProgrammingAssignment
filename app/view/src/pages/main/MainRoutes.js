@@ -10,6 +10,7 @@ import Signin from './signin';
 import NewsPage from "../main/news/NewsPage";
 import Signout from './signout';
 import Blogs from "./blogs";
+import SinglePost from "../../components/news/singlePost/SinglePost";
 
 const MainRoutes = [
 
@@ -66,6 +67,13 @@ const MainRoutes = [
         exact: true,
         public: true,
         component:<><Navbar /> <Blogs /><Footer /></>
+
+    },
+    {
+        path: 'news/post/:id',
+        exact: true,
+        public: true,
+        component:<><Navbar /> <SinglePost /><Footer /></>
 
     }
 ]

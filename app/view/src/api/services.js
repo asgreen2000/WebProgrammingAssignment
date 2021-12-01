@@ -68,7 +68,7 @@ const requireNewsList = callback => {
 const getSingleNews = (id,callback)=>{
   axios.get(url +'News/read_single.php?id='+ id)
   .then (res=>
-    callback(res.data)
+    callback(res.data[0])
   )
   .catch(error => console.log(error));
 }

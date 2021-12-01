@@ -2,7 +2,7 @@ import "./post.css";
 
 import { Link } from "react-router-dom";
 
-export default function Post({ img, topic, title, time, content }) {
+export default function Post({ img, topic, title, time, content, id}) {
   return (
     <div className="post">
       <img
@@ -17,7 +17,7 @@ export default function Post({ img, topic, title, time, content }) {
           </span>
         </div>
         <span className="postTitle">
-          <Link to="post/1" className="link">
+          <Link to={"post/" + id} className="link">
             {title}
           </Link>
         </span>

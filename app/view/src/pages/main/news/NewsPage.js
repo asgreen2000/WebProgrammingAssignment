@@ -1,11 +1,15 @@
-import posts from "../../../components/news/posts/Posts";
+import Posts from "../../../components/news/posts/Posts";
 import Sidebar from "../../../components/admin/Sidebar";
+import { requireNewsList } from "../../../api/services";
+import { useEffect, useState } from "react";
+
+
 const NewsPage = props => {
 
-
+    
     return (
         <div className='row'>
-                    <posts />
+                    <Posts />
                     <Sidebar />
                </div> 
     )

@@ -51,7 +51,7 @@ const Navbar = () => {
 
             <div className="nav_menu">
 
-            <button className='btn btn'><i class="fas fa-shopping-cart"></i></button>
+            {/* <button className='btn btn'><i class="fas fa-shopping-cart"></i></button> */}
             
                 {
                     !isLogin ? 
