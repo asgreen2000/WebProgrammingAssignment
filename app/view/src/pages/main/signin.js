@@ -23,7 +23,7 @@ const SignIn = ({action}) => {
         axios.post(URL + 'app/controller/account/login.php', data, {withCredentials: true})
 			.then(result => {
 				if (result.data.isSuccess)
-					navigate(result.data.role == 'Admin' ? '/admin' : '/', {replace: true})
+					navigate(result.data.role === 'Admin' ? '/admin' : '/', {replace: true})
 				else {
 					alert("Unsuccessful")
 				}
@@ -34,14 +34,14 @@ const SignIn = ({action}) => {
 	useEffect(() => axios.post(URL + 'app/controller/account/login.php', data, {withCredentials: true})
 		.then(result => {
 			if (result.data.isSuccess)
-				navigate(result.data.role == 'Admin' ? '/admin' : '/')
+				navigate(result.data.role === 'Admin' ? '/admin' : '/')
 		}
 	), [])
 
     const handleOnChange = (event) => {
 		var name = event.target.name
 		var value = event.target.value
-		if (name == "remember")
+		if (name === "remember")
         	value = event.target.checked
 		
 		data[name] = value
@@ -59,7 +59,7 @@ const SignIn = ({action}) => {
             <div className="row d-flex justify-content-center align-items-center h-100">
 				<div className="col-md-9 col-lg-6 col-xl-5">
 					<img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-login-form/draw2.png" className="img-fluid"
-					alt="Sample image" />
+					alt="Sample" />
 				</div>
             	<div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 					<form onSubmit={handleSubmit}>

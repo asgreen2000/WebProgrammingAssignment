@@ -12,7 +12,7 @@ const ProtectedRoute = ({element, role}) => {
     useEffect(() =>  {
         axios.get(url + 'account/read_session_data.php', {withCredentials: true})
             .then(result => {
-                if (result.data.isLogin && result.data.role == role)
+                if (result.data.isLogin && result.data.role === role)
                     setItem(element)
                 else
                     navigate("/signin")
