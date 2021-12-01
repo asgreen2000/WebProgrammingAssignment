@@ -9,6 +9,7 @@ import Signin from '../common/Signin';
 import NewsPage from "../main/news/NewsPage";
 import Blogs from "./blogs";
 import SinglePost from "../../components/news/singlePost/SinglePost";
+import ForgotPassword from "../common/ForgotPassword"
 
 const MainRoutes = [
 
@@ -67,6 +68,11 @@ const MainRoutes = [
         public: true,
         component:<><Navbar /> <SinglePost /><Footer /></>
 
+    }, {
+        path: 'forgot-password',
+        exact: true,
+        public: true,
+        component:<><ForgotPassword /><Footer /></>
     }
 ]
 

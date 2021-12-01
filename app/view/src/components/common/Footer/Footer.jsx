@@ -3,7 +3,7 @@ import './footer.css'
 function Footer() {
 
     return (
-        <div id="footer" >
+        <div id="footer" className="d-flex align-items-end">
             <div className="footer">
                 <div className="head-footer">
                     <div className="row p-3">
@@ -51,7 +51,7 @@ function Footer() {
                     </div>
                 </div>
 
-                <div className="bottom-footer">
+                <div className="bottom-footer mb-4">
                     <p>
                         All rights reserved by &copy; CompanyName 2021
                     </p>
