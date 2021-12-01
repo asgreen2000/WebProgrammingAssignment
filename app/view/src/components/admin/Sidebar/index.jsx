@@ -3,23 +3,23 @@ import './index.css'
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
+const rootPath = 'admin';
 
 function Sidebar(props){
     const location = useLocation();
-    const homeClass = location.pathname === "/" ? "active" : "";
-    const statistics = location.pathname.match(/^\/statistics/) ? "active" : "";
-    const product = location.pathname.match(/^\/product/) ? "active" : "";
-    const customer = location.pathname.match(/^\/customer/) ? "active" : "";
+    const homeClass = location.pathname === "/admin" ? "active" : "";
+    const news = location.pathname === "/admin/news" ? "active" : "";
+    const customer = location.pathname === "admin/customer" ? "active" : "";
     const account = location.pathname.match(/^\/account/) ? "active" : "";
+    console.log("location",location);
     return (
-        <div className="sidebar">
+        <div className="sidebar ">
                 <ul>
                     <li><h2>AmazingFood</h2></li>
-                    <li className={homeClass}><Link to="/"><i className="far fa-chart-bar"></i>DashBoard</Link></li>
-                    <li className={statistics}><Link to="/statistics"><i className="fas fa-balance-scale"></i>Statistics</Link></li>
-                    <li className={product}><Link to="/product"><i className="fas fa-shopping-basket"></i>Product</Link></li>
-                    <li className={customer}><Link to="/customer"><i className="fas fa-users"></i>Customer</Link></li>
-                    <li className={account}><Link to='/account'><i className="fas fa-user"></i>Account</Link></li>
+                    <li className={homeClass}><Link to="/admin"><i className="far fa-chart-bar"></i>DashBoard</Link></li>
+                    <li className={news}><Link to="/admin/news"><i class="fas fa-newspaper"></i>News</Link></li>
+                    <li className={customer}><Link to="/admin/customer"><i className="fas fa-users"></i>Contact</Link></li>
+                    <li className={account}><Link to='/admin/account'><i className="fas fa-user"></i>Account</Link></li>
                 </ul>
             </div>
     )

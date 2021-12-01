@@ -13,37 +13,36 @@ const EditProduct =({ isShowing, hide,handleInputChange,handleEditChange,product
                 </div>
                 <div className="modal-body">
                     <label className="mt-2">Name:</label>
-                    <input type="text" className="form-control" defaultValue={product.pName} name='pName' onChange={handleInputChange}/>
-
+                    <input type="text" className="form-control" defaultValue={product.pName} name='product_name' onChange={handleInputChange}/>
                     <div className="product-type mt-2" >
                     <p >Type:</p>
+            
 
-                    <input type="radio" id="Laptop" name="type" value="Laptop" defaultChecked={product.type==='Laptop'} onChange={handleInputChange}/>
-                    <label htmlFor="Laptop">Laptop</label>
-                    <input type ="radio" id="Desktop" name="type" value="Desktop" defaultChecked={product.type==='Desktop'} onChange={handleInputChange}/>
-                    <label htmlFor="Desktop">Desktop</label>
+                    <input type="radio" id="drink" name="product_type" value="Phụ kiện"  defaultChecked={product.type==='Phụ kiện'}  onChange={handleInputChange}/>
+                    <label htmlFor="Drink">Phụ kiện</label>
 
-                    <input type ="radio" id="Accessory" name="type" value="Accessory" defaultChecked={product.type==='Accessory'} onChange={handleInputChange}/>
-                    <label htmlFor="Accessory">Accessory</label>                    
-                    </div>
+                    <input type ="radio" id="fastfood" name="product_type" value="Laptop" defaultChecked={product.type==='Laptop'} onChange={handleInputChange}/>
+                    <label htmlFor="FastFood">Laptop</label>
+
+                    <input type ="radio" id="sweets" name="product_type" value="Desktop" defaultChecked={product.type==='Desktop'}onChange={handleInputChange}/>
+                    <label htmlFor="Sweets">Desktop</label>
                     
+                    
+                    </div>
                     <label className="mt-2">Image:</label>
-                    <input type="text" className="form-control" defaultValue={product.src} placeholder="Product URL Image" name='src' onChange={handleInputChange}/>
+                    <input type="text" className="form-control" defaultValue={product.src} name='image' onChange={handleInputChange}/>
 
-                    <label className="mt-2">Image Detail:</label>
-                    <input type="text" className="form-control"  defaultValue={product.srcDetail} placeholder="Product URL Image Detail" name='srcDetail' onChange={handleInputChange}/>
+
 
                     <label className="mt-2">Price:</label>
-                    <input type ="text" className="form-control"  defaultValue={product.price} placeholder="Product Price" name="price" onChange={handleInputChange}/>
-
-                    <label className="mt-2">Quantity:</label>
-                    <input type ="text" className="form-control"  defaultValue={product.quantity} placeholder="Product Quantity" name="quantity" onChange={handleInputChange} />
+                    <input type ="text" className="form-control" defaultValue={product.price} name="price" onChange={handleInputChange}/>
+                   
+                    <label className="mt-2">InStock:</label>
+                    <input type ="text" className="form-control" defaultValue={product.quantity} name="quantity" onChange={handleInputChange} />
                     <label className="mt-2">Description:</label>
-                    <input rows="3" type ="text-area" className="form-control" name="description" defaultValue={product.description} onChange={handleInputChange}/>
-                    <label className="mt-2">Alt:</label>
-                    <input rows="3" type ="text" defaultValue={product.alt} className="form-control" name="alt" onChange={handleInputChange}/>
+                    <textarea rows="3" type ="text-area" className="form-control" name="product_description" defaultValue={product.description} onChange={handleInputChange}/>
 
-                </div>
+                    </div>
                     <div className="modal-footer">
                         <button onClick={()=>handleEditChange(product.id)}>Save change</button>
                     </div>

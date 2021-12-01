@@ -23,8 +23,8 @@ const AddProduct =({ isShowing, hide,callB,handleInputChange }) => isShowing ? R
                     <input type ="radio" id="Desktop" name="type" value="Desktop" onChange={handleInputChange}/>
                     <label htmlFor="Desktop">Desktop</label>
 
-                    <input type ="radio" id="Accessory" name="type" value="Accessory" onChange={handleInputChange}/>
-                    <label htmlFor="Accessory">Accessory</label>                    
+                    <input type ="radio" id="Accessory" name="type" value="Phụ kiện" onChange={handleInputChange}/>
+                    <label htmlFor="Accessory">Phụ kiện</label>                    
                     </div>
 
                     <label className="mt-2">Image:</label>

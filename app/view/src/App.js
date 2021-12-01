@@ -1,36 +1,44 @@
-import React from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProductProvider from "./context/ProductManagement";
-import Sidebar from './components/admin/Sidebar'
-import routes from "./routes";
-// import Navbar from './components/Navbar';
-// import Footer from './components/Footer';
-// import Home from './pages';
-// import About from './pages/about';
-// import Products from './pages/products';
-// import Teams from './pages/team';
-// import Blogs from './pages/blogs';
-// import SignUp from './pages/signup';
-// import SignIn from './pages/signin';
+import adminRoutes from './pages/admin/AdminRoutes';
+import MainRoutes from './pages/main/MainRoutes';
+import Homepage from "./pages/news/homepage/Homepage";
+import Single from "./pages/news/single/Single";
 
-  
 function App() {
+  
   return (
     <ProductProvider>
-    <BrowserRouter>
-<Sidebar/>
-      <Routes>
-      {
-        [
-        ...routes.map((route, index) => 
-          <Route  exact path={route.path} element={route.component} key={index}></Route>
-        )
-        ]
-      }
+      <BrowserRouter>
+        <Routes>
+          <Route path='news' element={<Homepage />} />
+          <Route path='news/post/1' element={<Single />} />
 
-      </Routes>
+          <Route path='admin'>
+            {
+              adminRoutes.map(route => {
+                return <Route path={route.path} element={
+                  route.component
+                } />
+              })
+            }
+          </Route>
+
+          <Route path=''>
+            {
+              MainRoutes.map(route => {
+
+                return <Route path={route.path} element={
+                  route.component
+                } />
+              })
+            }
+          </Route>
+        </Routes>
       </BrowserRouter>
-      </ProductProvider>
-  )}
-  
+    </ProductProvider>
+  )
+}
+
 export default App;

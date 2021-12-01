@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import './ManageProduct.css'
 import { insertProduct,requireProductList,editProduct,deleteProduct } from '../../../api/services'
-import { ProductManagement, } from '../../../context/ProductManagement';
+import { ProductManagement} from '../../../context/ProductManagement';
 import React, { useContext, useEffect, useState } from 'react';
 import AddProduct from "./AddProduct/AddProduct"
 import EditProduct from "./EditProduct/EditProduct"
@@ -19,10 +19,13 @@ import DialogActions from '@mui/material/DialogActions';
 // import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Link } from 'react-router-dom';
-
-
+import { useNavigate } from 'react-router';
+import { logout } from '../../../api/services';
 
 function ManageProduct() {
+
+    const navigate = useNavigate();
+
     const [data, setData] = useState({
        pName:'',
        src:'',
@@ -56,6 +59,17 @@ function ManageProduct() {
     }, [isShowing, isShowingEditModal, productList,filterSearch]);
 
 
+    const handleLogout = (event) => {
+
+        
+        const result = logout();
+        console.log(result);
+        if (result)
+            navigate('/signin');
+            event.preventDefault();
+    }
+
+
     const handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
@@ -87,7 +101,7 @@ function ManageProduct() {
             type: product.type,
             quantity: product.quantity,
             price: product.price,
-            product_description: product.description,
+            description: product.description,
             src: product.src,
             srcDetail: product.srcDetail,
             alt: product.alt,
@@ -169,7 +183,7 @@ function ManageProduct() {
                                         <p className="dropdown-item" ><Link to='/admin/account'>My profile</Link></p>
                                         </li>
                                         <li>
-                                            <a className="dropdown-item" href="#">Logout</a>
+                                        <button className="dropdown-item" onClick={handleLogout}>Logout</button>
                                         </li>
                                     </ul>
                                 </li>
@@ -197,11 +211,10 @@ function ManageProduct() {
                                 <em>None</em>
                             </MenuItem>
                             <MenuItem value={'All'}>All</MenuItem>
-                            <MenuItem value={'Drink'}>Drink</MenuItem>
-                            <MenuItem value={'FastFood'}>FastFood</MenuItem>
-                            <MenuItem value={'Sweets'}>Sweets</MenuItem>
-                            <MenuItem value={'Canning'}>Canning</MenuItem>
-                            <MenuItem value={'FrozenFood'}>FrozenFood</MenuItem>
+                            <MenuItem value={'Drink'}>Điện thoại</MenuItem>
+                            <MenuItem value={'FastFood'}>Laptop</MenuItem>
+                            <MenuItem value={'Sweets'}>Phụ kiện</MenuItem>
+                            
                         </Select>
                     </FormControl>
 

@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: web
 --
-CREATE DATABASE web 
+CREATE DATABASE web;
+USE web;
 
 -- --------------------------------------------------------
 
@@ -29,13 +30,14 @@ CREATE DATABASE web
 --
 
 CREATE TABLE account (
-  id int(11) NOT NULL,
+  id int(11) NOT NULL AUTO_INCREMENT,
   username varchar(255) NOT NULL,
   password varchar(255) NOT NULL,
   email varchar(50) NOT NULL,
   name varchar(50) NOT NULL,
   phoneNumber varchar(15) NOT NULL,
-  role varchar(255) NOT NULL
+  role varchar(255) NOT NULL,
+  PRIMARY KEY (id)
 ) ;
 
 -- --------------------------------------------------------
@@ -105,7 +107,6 @@ CREATE TABLE review (
 -- Indexes for table account
 --
 ALTER TABLE account
-  ADD PRIMARY KEY (id),
   ADD UNIQUE KEY username (username),
   ADD UNIQUE KEY email (email);
 
