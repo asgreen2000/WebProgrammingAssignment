@@ -65,8 +65,24 @@ class Account {
         }
     }
 
-    public function create() {
+    public function update() {
+        $result = false;
+        if ($this->password) {
+            $stmt = $this->conn->prepare("UPDATE account set password =?, email=?, name=?, phoneNumber=? where username=?");
+            $pass = password_hash($this->password, PASSWORD_BCRYPT);
+            $stmt->bind_param('sssss', $pass, $this->email, $this->name, $this->phonenumber, $this->username);
+            $result = $stmt->execute();
+            $stmt->close();
+        } else {
+            $stmt = $this->conn->prepare("UPDATE account set email=?, name=?, phoneNumber=? where username=?");
+            $stmt->bind_param('ssss', $this->email, $this->name, $this->phonenumber, $this->username);
+            $result = $stmt->execute();
+            $stmt->close();
+        }
+        return $result;
+    }
 
+    public function create() {
         if (!$this->isValid())
             return false;
         
@@ -76,19 +92,24 @@ class Account {
         $pass = password_hash($this->password, PASSWORD_BCRYPT);
         $sql->bind_param('sssss', $this->username, $pass, $this->email, $this->name, $this->phonenumber);
         $result = $sql->execute();
-        print_r($this->conn->error);
         $sql->close();
         return $result;
     }
 
     public function read() {
         if ($this->username) {
-            $stmt = $this->conn->prepare("SELECT * FROM account where username=?");
+            $stmt = $this->conn->prepare("SELECT username, name, email, phoneNumber FROM account where username=?");
             $stmt->bind_param('s', $this->username);
             $stmt->execute();
             $result = $stmt->get_result();
-            return $result->fetch_all(MYSQLI_ASSOC);
+            $user = $result->fetch_assoc();
+            return $user;
         }
+    }
+
+    public function readAll() {
+        $sql = "SELECT * from account where role != 'Admin'";
+        return $this->conn->query($sql);
     }
 }
 

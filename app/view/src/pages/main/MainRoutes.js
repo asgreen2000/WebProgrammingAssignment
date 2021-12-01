@@ -10,6 +10,8 @@ import NewsPage from "../main/news/NewsPage";
 import Blogs from "./blogs";
 import SinglePost from "../../components/news/singlePost/SinglePost";
 import ForgotPassword from "../common/ForgotPassword"
+import AccountDetails from "./accountDetail";
+import ProtectedRoute from "../common/ProtectedRoute"
 
 const MainRoutes = [
 
@@ -73,6 +75,11 @@ const MainRoutes = [
         exact: true,
         public: true,
         component:<><ForgotPassword /><Footer /></>
+    }, {
+        path: 'account-details',
+        exact: true,
+        public: true,
+        component: <ProtectedRoute element = {<><Navbar /><AccountDetails /><Footer /></>} role = "User"/>
     }
 ]
 
