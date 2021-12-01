@@ -3,7 +3,7 @@
     session_start();
     include_once('../../config/Header.php');
 
-    if (isset($_SESSION)) {
+    if (isset($_SESSION) && isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true) {
         $result = array('username' => "", 'isLogin' => false, 'role' => '');
         if (isset($_SESSION['username']))
             $result['username'] = $_SESSION['username'];

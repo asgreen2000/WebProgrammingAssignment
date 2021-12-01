@@ -107,16 +107,11 @@ class Account {
         }
     }
 
-    public function readAll() {
-        $sql = "SELECT * from account where role != 'Admin'";
-        return $this->conn->query($sql);
-    }
-
     public function read_customer() {
 
         $sql = "SELECT * from account where role != 'User'";
         $result = $this->conn->query($sql);
-        return $result;
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
     public function delete() {
         $sql = "DELETE FROM account where id=" . $this->id;

@@ -4,28 +4,13 @@
 
     include_once('../../config/Database.php');
     include_once('../../models/Account.php');
+    session_start();
 
-
-    // database and connect
-    $account = new Account((new Database())->connect());
-
-    $result = $account->read_customer();
-    $accounts = array();
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            extract($row);
-            $account = array(
-                'id' => $id,
-                'username' => $username,
-                'password' => $password,
-                "name" => $name,
-                "email" => $email,
-                "phoneNumber" => $phoneNumber,
-            );
-            array_push($accounts, $account);
-        }
-    } 
-
-    echo json_encode($accounts);
+    if (isset($_SESSION['role']) && isset($_SESSION['isLogin']) && $_SESSION['role'] == 'Admin' && $_SESSION['isLogin'] == true) {
+        $account = new Account((new Database())->connect());
+        $result = $account->read_customer();
+        echo json_encode($result);
+    } else {
+        echo json_encode(array());
+    }
 ?>
