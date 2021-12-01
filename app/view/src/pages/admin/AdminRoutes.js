@@ -2,6 +2,7 @@ import Sidebar from "../../components/admin/Sidebar";
 import ManageProduct from "../../components/admin/ManageProduct/ManageProduct";
 import ProtectedRoute from "../common/ProtectedRoute";
 import ManageNews from "../../components/admin/ManageNews/ManageNews";
+import ManageContact from "../../components/admin/ManageContact/ManageContact";
 
 const adminRoutes = [
 
@@ -16,6 +17,12 @@ const adminRoutes = [
         exact: true,
         public: true,
         component: <><ProtectedRoute element = {<><Sidebar /><ManageNews/></>} role = 'Admin'/></>
+    },
+    {
+        path: 'contact',
+        exact: true,
+        public: true,
+        component: <><ProtectedRoute element = {<><Sidebar /><ManageContact/></>} role = 'Admin'/></>
     }
     
 ];

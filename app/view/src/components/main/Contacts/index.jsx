@@ -55,9 +55,12 @@ function Contact() {
                                     onChange={handleOnChange}
                                 />
 
-                                <textarea placeholder="Message" />
+                                <input type='text' placeholder="Phone number" name='phoneNumber'
+                                    onChange={handleOnChange}
+                                />
+                                <br />
                                 <Button onClick={handleOnClick}>
-                                    Send Message
+                                    SUBCRIPTION
                                 </Button>
                                 <p>{statusText}</p>
                             </form>

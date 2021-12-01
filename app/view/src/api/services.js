@@ -92,7 +92,7 @@ const editNews =(News)=>{
 const deleteNews = (id)=>{
   axios.delete(url+ 'News/delete.php?id='+ id)
   .then(res=>{
-    console.log("id delete:",id);
+    
   })
   .catch(error => console.log(error));
 }
@@ -148,6 +148,43 @@ const createContact = (data) => {
   })
 }
 
+const sendEmail = data => {
+
+  return new Promise((resolve, reject) => {
+
+    axios.post(url + 'contact/send_mail.php',data)
+    .then(res => {
+      resolve(res.data);
+      console.log(res.data);
+    }
+    )
+    .catch(error => reject(error));
+
+  })
+
+}
+
+const deleteContact = (id)=>{
+  axios.delete(url+ 'contact/delete.php?id='+ id)
+  .then(res=>{
+    console.log(res);
+  })
+  .catch(error => console.log(error));
+}
+
+
+const requireContactList = callback => {
+
+  axios.get(url + 'contact/read.php')
+    .then(res => {
+      const data = res.data;
+      console.log(data);
+      callback(data);
+    }
+    )
+    .catch(error => console.log(error));
+};
+
 
 export {
   url,
@@ -164,5 +201,8 @@ export {
   checkUserIs,
   logout,
   getUser,
-  createContact
+  createContact,
+  sendEmail,
+  requireContactList,
+  deleteContact
 };
