@@ -27,7 +27,7 @@ const SignUp = () => {
 				if (result.data.success)
 					navigate('/')
 				else {
-					// alert("Không thành công")
+					alert("Không thành công")
 				}
         	}
         );

@@ -1,6 +1,6 @@
 <?php
 
-class News {
+class Contact {
 
     // db config
     private $conn;
@@ -9,11 +9,18 @@ class News {
 
     // attribute
     public $id;
-    public $title;
-    public $content;
-    public $subject;
-    public $image;
-    public $postTime;
+    public $cName;
+    public $email;
+    public $phoneNumber;
+
+    public function validate() {
+        
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            return false;
+        }
+
+        return true;
+    }
 
     public function __construct($conn)
     {
@@ -31,18 +38,28 @@ class News {
     public function readSingle() {
         $sql = "SELECT * FROM " . $this->table . " where id=" . $this->id;
         $result = $this->conn->query($sql);
+       
         return $result;
+    }
+
+    public function exist() {
+
+        $sql = "SELECT * FROM " . $this->table . " where email='" . $this->email."'";
+        $result = $this->conn->query($sql);
+        return $result;
+
     }
 
     public function create() {
 
-        $sql = $this->conn->prepare("INSERT INTO ". $this->table . "(pName,src,srcDetail,price,quantity,description,type,alt) VALUES 
-        (?, ?, ?, ?, ?, ?, ?, ?)
+        $sql = $this->conn->prepare("INSERT INTO ". $this->table . "(cName,email,phoneNumber) VALUES 
+        (?, ?, ?)
         ");
 
-        $sql->bind_param("sssiisss", $this->pName, $this->src, $this->srcDetail, 
-        $this->price, $this->quantity, $this->description, $this->type, $this->alt);
+        $sql->bind_param("sss", $this->cName, $this->email, $this->phoneNumber);
         $result = $sql->execute();
+        
+        
         $sql->close();
         return $result;
     }
@@ -55,17 +72,17 @@ class News {
 
     public function update() {
 
-        $sql = $this->conn->prepare("UPDATE ". $this->table . " set pName=?, src=?, srcDetail=?, price=?, quantity=?, description=?, 
-        type=?, alt=? where id=?
-        ");
+        $sql = $this->conn->prepare("UPDATE ". $this->table . " set cName=?, email=?, phoneNumber=? where id=?");
 
-        $sql->bind_param("sssiisssi", $this->pName, $this->src, $this->srcDetail, 
-        $this->price, $this->quantity, $this->description, $this->type, $this->alt, $this->id);
+        $sql->bind_param("sssi", $this->cName, $this->email, $this->phoneNumber, $this->id);
         $result = $sql->execute();
         
         $sql->close();
         return $result;
     }
+
+    
+
 }
 
 ?>
