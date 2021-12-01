@@ -1,4 +1,5 @@
 <?php
+
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
     header('Access-Control-Allow-Methods: POST');
@@ -22,8 +23,7 @@
         
 
         $exist = ($contact->exist());
-        
-        var_dump($exist->num_rows);
+
 
         if ($exist->num_rows > 0)
         {
@@ -33,10 +33,13 @@
         }
         else {
             $result = $contact->create();
-            if ($result)
+            if ($result) {
+                
+                
                 echo json_encode(
                     array('sucess' => $result, 'message' => "Created!")
                 );
+            }
             else {
                 echo json_encode(
                     array('sucess' => $result, 'message' => "Cannot create!")
