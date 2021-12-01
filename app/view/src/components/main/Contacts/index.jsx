@@ -3,11 +3,37 @@ import Slider from '../../common/Slider'
 import { Button, Grid } from '@material-ui/core';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useState } from 'react';
+import {createContact} from "../../../api/services";
 
 AOS.init()
 
 function Contact() {
 
+    const [data, setData] = useState({
+
+        email: "",
+        cName: "",
+        phoneNumber: ""
+    });
+
+    const [statusText, setStatusText] = useState("");
+
+    const handleOnClick = () => {
+
+        createContact(data).then(result => {
+            console.log(result.message);
+            setStatusText(result.message);
+        }).then(err => {});
+    }
+
+    const handleOnChange = (event) => {
+
+       
+        data[event.target.name] = event.target.value;
+        setData({...data});
+        
+    }
 
     return (
         <div id="contact">
@@ -22,12 +48,18 @@ function Contact() {
                     <div className="contact_form">
                         <div className="contact_boxform">
                             <form action="" autoComplete="off" data-aos="fade-up">
-                                <input style={{ marginRight: '5%' }} type="email" placeholder="Email" />
-                                <input type="text" placeholder="Name" />
+                                <input style={{ marginRight: '5%' }} type="email" placeholder="Email" name='email'
+                                    onChange={handleOnChange}
+                                />
+                                <input type="text" placeholder="Name" name='cName'
+                                    onChange={handleOnChange}
+                                />
+
                                 <textarea placeholder="Message" />
-                                <Button>
+                                <Button onClick={handleOnClick}>
                                     Send Message
                                 </Button>
+                                <p>{statusText}</p>
                             </form>
                         </div>
                     </div>

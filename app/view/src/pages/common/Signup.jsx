@@ -45,8 +45,8 @@ const SignUp = () => {
 		setHint({...hint})
     }
 
-	return <div className="container" style={{backgroundImage: `url("/images/background1.jpg")`, backgroundRepeat: "no-repeat", backgroundPosition: "top"}}>
-		<h1 className="my-4 text-center">Đăng ký tài khoản Buy Me First</h1>
+	return <div className="container mb-5" style={{backgroundImage: `url("/images/background1.jpg")`, backgroundRepeat: "no-repeat", backgroundPosition: "top"}}>
+		<h1 className="my-4 text-center text-uppercase">Buy Me First</h1>
 		<form className="form-control my-4" style={{maxWidth: "600px"}} onSubmit={handleSubmit}>
 			<div className="form-floating mb-3">
 				<input type="text" className={"form-control " + (hint['username'] ? "is-invalid" : "is-valid")} id="username" name="username" aria-describedby="usernameHint" placeholder="Username" value={data['username']} onChange={handleOnChange} />

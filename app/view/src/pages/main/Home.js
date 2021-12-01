@@ -9,8 +9,8 @@ const Home = props => {
         <div>
             <Banner title="My Shop"/>
         </div>
-        <div className='p-5' id='readmore'>
-            <div className='col-12 col-lg-12'>
+        <div className='pb-5' id='readmore'>
+            <div className='w-75 mx-auto'>
                 <MenuItem />
             </div>
            

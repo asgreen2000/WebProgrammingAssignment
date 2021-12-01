@@ -133,6 +133,22 @@ const deleteProduct = (id)=>{
   .catch(error => console.log(error));
 }
 
+const createContact = (data) => {
+
+  return new Promise((resolve, reject) => {
+
+    axios.post(url + 'contact/create.php',data)
+    .then(res => {
+      resolve(res.data);
+      console.log(res.data);
+    }
+    )
+    .catch(error => reject(error));
+
+  })
+}
+
+
 export {
   url,
   requireProductList,
@@ -147,5 +163,6 @@ export {
   deleteNews,
   checkUserIs,
   logout,
-  getUser
+  getUser,
+  createContact
 };
