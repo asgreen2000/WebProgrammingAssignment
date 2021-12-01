@@ -107,9 +107,9 @@ class Account {
         }
     }
 
-    public function read_customer() {
 
-        $sql = "SELECT * from account where role != 'User'";
+    public function read_customer() {
+        $sql = "SELECT * from account where role = 'User'";
         $result = $this->conn->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }

@@ -116,10 +116,10 @@ function ManageAccount() {
                         <thead style={{position:'sticky',top:'0',overflowY:'hidden', backgroundColor:'#eee'}}>
                             <tr >
                                 <th scope="col">#</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Content</th>
-                                <th scope="col">Subject</th>
-                                <th scope="col">postTime</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone number</th>
                                 <td colSpan="2"></td>
                             </tr>
                         </thead>
