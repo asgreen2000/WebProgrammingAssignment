@@ -75,7 +75,6 @@ const SignUp = () => {
 			</div>
 			<div class="btn-group d-grid gap-2 col-6 mx-auto">
 				<button type="submit" class="btn btn-primary form-control">Submit</button>
-				<button type="reset" onclick="resetForm()" class="btn btn-primary form-control">Reset</button>
 			</div>
 		</form>
 	</div>

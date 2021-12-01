@@ -1,10 +1,11 @@
 <?php
+    
 
 class Account {
 
     // db config
     private $conn;
-
+    private $headers =  'MIME-Version: 1.0' . "\r\n" . 'From:buihuutiendat2017@gmail.com ' . "\r\n" . 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
 
     // attribute
     public $id;
@@ -53,10 +54,12 @@ class Account {
             $result = $stmt->get_result();
             if ($result->num_rows > 0) {
                 $user = $result->fetch_assoc();
+                $newPassword = bin2hex(openssl_random_pseudo_bytes(6));
                 $stmtUpdate = $this->conn->prepare("UPDATE account set password=? where username=? and email=?");
-                $hashPassword = password_hash($this->email, PASSWORD_BCRYPT);
+                $hashPassword = password_hash($newPassword, PASSWORD_BCRYPT);
                 $stmtUpdate->bind_param('sss', $hashPassword, $this->username, $this->email);
-                $res = $stmtUpdate->execute();
+                if ($res = $stmtUpdate->execute())
+                    return mail($this->email, "Reset password", "Your new password: {$newPassword}");
                 return $res;
             }
         } else {
