@@ -25,10 +25,6 @@ export default function SinglePost() {
       />
       <h1 className="singlePostTitle">
         {news.title}
-        <div className="singlePostEdit">
-          <i className="singlePostIcon far fa-edit"></i>
-          <i className="singlePostIcon far fa-trash-alt"></i>
-        </div>
       </h1>
       <div className="singlePostInfo">
         <span>

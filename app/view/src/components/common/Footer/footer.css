@@ -1,10 +1,9 @@
 #footer {
     box-sizing: border-box;
     background-color:white ;
-}
-#footer .head-footer{
     border-top: 1px solid black;
 }
+
 
 #footer .head-footer .sulogan {
     text-align: justify;

@@ -45,6 +45,25 @@ class Account {
         $stmt->close();
     }
 
+    public function resetPassword() {
+        if ($this->username && $this->email) {
+            $stmt = $this->conn->prepare("SELECT * FROM account where username=? and email=?");
+            $stmt->bind_param('ss', $this->username, $this->email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                $user = $result->fetch_assoc();
+                $stmtUpdate = $this->conn->prepare("UPDATE account set password=? where username=? and email=?");
+                $hashPassword = password_hash($this->email, PASSWORD_BCRYPT);
+                $stmtUpdate->bind_param('sss', $hashPassword, $this->username, $this->email);
+                $res = $stmtUpdate->execute();
+                return $res;
+            }
+        } else {
+            return false;
+        }
+    }
+
     public function create() {
 
         if (!$this->isValid())

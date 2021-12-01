@@ -60,7 +60,7 @@ const SignIn = () => {
 		setFeedback({...feedback})
     }
 
-    return <section className="vh-100">
+    return <section>
         <div className="container-fluid h-custom">
             <div className="row d-flex justify-content-center align-items-center h-100">
 				<div className="col-md-9 col-lg-6 col-xl-5">
@@ -86,7 +86,7 @@ const SignIn = () => {
 								<input className="form-check-input me-2" type="checkbox" id="remember" name="remember" checked={data['remember']} onChange={handleOnChange} />
 								<label className="form-check-label" for="remember">Remember me for 30 days</label>
 							</div>
-							<a href="#" className="text-body">Forgot password?</a>
+							<a href="/forgot-password" className="text-body">Forgot password?</a>
 						</div>
 
 						<div className="text-center text-lg-start mt-4 pt-2">
