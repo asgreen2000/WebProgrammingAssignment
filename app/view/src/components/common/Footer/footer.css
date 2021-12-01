@@ -1,17 +1,13 @@
 #footer {
     box-sizing: border-box;
     background-color:white ;
-    padding-top: 32px;
-    padding-bottom: 32px;
 }
 #footer .head-footer{
-    border-bottom: 2px solid #eee;
+    border-top: 1px solid black;
 }
 
 #footer .head-footer .sulogan {
     text-align: justify;
-    padding-left: 12px;
-    padding-right: 24px;
 }
 
 #footer .footer {
@@ -24,8 +20,6 @@
 
 #footer .bottom-footer{
     text-align: center;
-    margin-top: 24px;
-    margin-bottom: 30px;
 }
 #footer ul li,#footer ul {
     list-style: none;

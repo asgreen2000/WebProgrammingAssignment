@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { url } from "../../api/services";
-
   
 const SignUp = () => {
 	const [data, setData] = useState({
@@ -27,7 +26,7 @@ const SignUp = () => {
 				if (result.data.success)
 					navigate('/')
 				else {
-					// alert("Không thành công")
+					alert("Không thành công")
 				}
         	}
         );
@@ -46,9 +45,9 @@ const SignUp = () => {
 		setHint({...hint})
     }
 
-	return <div className="text-center">
-		<h1 className="my-4">Đăng ký tài khoản Buy Me First</h1>
-		<form className="form-control my-4" style={{maxWidth: "600px", margin: "0 auto"}} onSubmit={handleSubmit}>
+	return <div className="container" style={{backgroundImage: `url("/images/background1.jpg")`, backgroundRepeat: "no-repeat", backgroundPosition: "top"}}>
+		<h1 className="my-4 text-center">Đăng ký tài khoản Buy Me First</h1>
+		<form className="form-control my-4" style={{maxWidth: "600px"}} onSubmit={handleSubmit}>
 			<div className="form-floating mb-3">
 				<input type="text" className={"form-control " + (hint['username'] ? "is-invalid" : "is-valid")} id="username" name="username" aria-describedby="usernameHint" placeholder="Username" value={data['username']} onChange={handleOnChange} />
 				<label for="username">Username</label>

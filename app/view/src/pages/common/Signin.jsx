@@ -37,7 +37,7 @@ const SignIn = () => {
 		;
     }
 
-	useEffect(() => axios.post(url + 'app/controller/account/login.php', data, {withCredentials: true})
+	useEffect(() => axios.post(url + 'account/login.php', data, {withCredentials: true})
 		.then(result => {
 			if (result.data.isSuccess)
 				navigate(result.data.role == 'Admin' ? '/admin' : '/')
