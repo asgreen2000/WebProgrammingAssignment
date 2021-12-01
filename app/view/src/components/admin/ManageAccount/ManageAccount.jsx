@@ -78,7 +78,7 @@ function ManageAccount() {
                                     </a>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <li>
-                                        <p className="dropdown-item" ><Link to='/admin/account'>My profile</Link></p>
+                                        <p className="dropdown-item" ><Link to='/admin/account-details'>My profile</Link></p>
                                         </li>
                                         <li>
                                             <a className="dropdown-item" href="#">Logout</a>

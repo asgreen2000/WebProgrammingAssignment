@@ -129,7 +129,7 @@ function ManageContact() {
                                     </a>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <li>
-                                        <p className="dropdown-item" ><Link to='/admin/account'>My profile</Link></p>
+                                        <p className="dropdown-item" ><Link to='/admin/account-details'>My profile</Link></p>
                                         </li>
                                         <li>
                                         <button className="dropdown-item" onClick={handleLogout}>Logout</button>
