@@ -122,6 +122,8 @@
 
 .comment-image-container img {
     border-radius: 50px;
+    height: auto;
+    width: 100%;
 }
 
 .comment-right-part {
