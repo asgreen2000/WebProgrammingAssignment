@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { url } from "../../api/services";
   
-const SignUp = () => {
+const AccountDetails = () => {
 	const [data, setData] = useState({
 		username: "",
 		password: "",
@@ -16,17 +16,35 @@ const SignUp = () => {
 
 	})
 
-	const navigate = useNavigate()
+    useEffect(() => {
+        setData(data)
+    }, data)
+
+    useEffect(() => {
+        axios.get(url + 'account/read_single.php', {withCredentials: true})
+			.then(result => {
+				if (result.data.success) {
+                    const user = result.data.user
+                    data.username = user.username
+                    data.email = user.email
+                    data.name = user.name
+                    data.phone = user.phoneNumber
+                    setData({...data})
+                } else {
+					alert(result.data.message)
+				}
+        	}
+        );
+    }, [])
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
-        axios.post(url + 'account/create.php', data, {withCredentials: true})
+        axios.post(url + 'account/update.php', data, {withCredentials: true})
 			.then(result => {
-				console.log(result);
 				if (result.data.success)
-					navigate('/')
+					alert('Successful')
 				else {
-					alert("Không thành công")
+					alert("Unsuccessful")
 				}
         	}
         );
@@ -46,10 +64,10 @@ const SignUp = () => {
     }
 
 	return <div className="container mb-5" style={{backgroundImage: `url("/images/background1.jpg")`, backgroundRepeat: "no-repeat", backgroundPosition: "top"}}>
-		<h1 className="my-4 text-center text-uppercase">Buy Me First</h1>
+		<h1 className="my-4 text-center text-uppercase">Account Details</h1>
 		<form className="form-control my-4" style={{maxWidth: "600px"}} onSubmit={handleSubmit}>
 			<div className="form-floating mb-3">
-				<input type="text" className={"form-control " + (hint['username'] ? "is-invalid" : "is-valid")} id="username" name="username" aria-describedby="usernameHint" placeholder="Username" value={data['username']} onChange={handleOnChange} />
+				<input type="text" className={"form-control " + (hint['username'] ? "is-invalid" : "is-valid")} id="username" name="username" aria-describedby="usernameHint" placeholder="Username" value={data['username']} disabled={true}/>
 				<label for="username">Username</label>
 				<div id="usernameHint" className="invalid-feedback">{hint['username']}</div>
 			</div>
@@ -74,10 +92,10 @@ const SignUp = () => {
 				<div id="phoneHint" className="invalid-feedback">{hint['phone']}</div>
 			</div>
 			<div class="btn-group d-grid gap-2 col-6 mx-auto">
-				<button type="submit" class="btn btn-primary form-control">Submit</button>
+				<button type="submit" class="btn btn-primary form-control">Update</button>
 			</div>
 		</form>
 	</div>
 };
   
-export default SignUp;
+export default AccountDetails;

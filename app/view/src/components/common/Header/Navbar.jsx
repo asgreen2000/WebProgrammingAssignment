@@ -4,9 +4,10 @@ import { FaBars } from 'react-icons/fa';
 import { NavLink as Link } from 'react-router-dom';
 import { checkUserIs } from '../../../api/services';
 import { logout } from '../../../api/services';
+import { useNavigate } from 'react-router';
 
 const Navbar = () => {
-
+    const navigate = useNavigate()
     const [isLogin, setLogin] = useState(false);
 
     useEffect(() => {
@@ -20,13 +21,16 @@ const Navbar = () => {
     }, []);
 
     const handleSignOut = event => {
-
-
         event.preventDefault();
 
         logout();
         setLogin(false);
-        
+        navigate("/")
+    }
+
+    const handleAcountDetails = (event) => {
+        event.preventDefault()
+        navigate('/account-details')
     }
 
     return (
@@ -60,7 +64,19 @@ const Navbar = () => {
                         <button><Link to='/signup'>Sign Up</Link></button>
                     </>
                     :
-                    <button onClick={handleSignOut}>Sign Out</button>
+                    <div className="dropdown">
+                        <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i className="far fa-user"></i>
+                        </button>
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <button className='dropdown-item' onClick={handleAcountDetails}>Account details</button>
+                            </li>
+                            <li>
+                                <button className="dropdown-item" onClick={handleSignOut}>Sign out</button>
+                            </li>
+                        </ul>
+                    </div>
                 }
                
 

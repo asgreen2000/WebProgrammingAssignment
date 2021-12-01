@@ -9,7 +9,7 @@
     {
         $account = new Account((new Database())->connect());
 
-        $result = $account->read();
+        $result = $account->readAll();
 
         $users = array();
         if ($result->num_rows > 0) {
