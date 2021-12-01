@@ -31,7 +31,7 @@ function Contact() {
                             </form>
                         </div>
                     </div>
-                    <div className="contact_address" data-aos="fade-up">
+                    <div className="contact_address px-3" data-aos="fade-up">
                         <Grid container spacing={2}>
                             <Grid item xs={6}>
                                 <h4>Quang Tri</h4>
