@@ -1,10 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { url } from "../../api/services";
 
-const URL = 'http://localhost/assi/'
-
-const SignIn = ({action}) => {
+const SignIn = () => {
     const [data, setData] = useState({
         username: "",
         password: "",
@@ -20,7 +19,7 @@ const SignIn = ({action}) => {
     
     const handleSubmit = (event) => {
 		event.preventDefault()
-        axios.post(URL + 'app/controller/account/login.php', data, {withCredentials: true})
+        axios.post(url + 'account/login.php', data, {withCredentials: true})
 			.then(result => {
 
 				console.log(result);
@@ -38,7 +37,7 @@ const SignIn = ({action}) => {
 		;
     }
 
-	useEffect(() => axios.post(URL + 'app/controller/account/login.php', data, {withCredentials: true})
+	useEffect(() => axios.post(url + 'account/login.php', data, {withCredentials: true})
 		.then(result => {
 			if (result.data.isSuccess)
 				navigate(result.data.role == 'Admin' ? '/admin' : '/')

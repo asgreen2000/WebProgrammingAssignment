@@ -33,8 +33,8 @@
     width: 50%;
 }
 .contact_boxform {
-    width: 500px;
-    height: 350px;
+    width: 100%;
+    height: auto;
     border: 1px solid #3f63ae;
     padding: 20px;
     box-sizing: border-box;
